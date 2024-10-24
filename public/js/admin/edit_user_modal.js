@@ -61,6 +61,14 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
         const idCell = row.querySelector('td:first-child');
         if (idCell.textContent === userId) {
 
+            const stateCell = row.querySelector('td:nth-child(4)');
+            switch (newGrade) {
+                case 3: stateCell.textContent = '정지'; break;
+                case 2: stateCell.textContent = '활동중'; break;
+                case 1: stateCell.textContent = '삭제된 계정'; break;
+                default: stateCell.textContent = '삭제된 계정';
+            }
+
             const gradeCell = row.querySelector('td:nth-child(7)');
             switch (newGrade) {
                 case 7: gradeCell.textContent = 'DIAMOND'; break;

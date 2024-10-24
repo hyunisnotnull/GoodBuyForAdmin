@@ -34,7 +34,18 @@
                         <td><%= user.U_ID %></td>
                         <td><%= user.U_NICK %></td>
                         <td><%= user.U_PHONE %></td>
-                        <td><%= user.U_ACTIVE === 2 ? '활동중' : '삭제됨' %></td>
+                        <td>
+                            <% 
+                            let active; 
+                            switch (user.U_ACTIVE) {
+                                case 1: active = '삭제된 계정'; break;
+                                case 2: active = '활동중'; break;
+                                case 3: active = '정지'; break;
+                                default: active = 'UNKNOWN'; 
+                            }
+                            %>
+                            <%= active %>
+                        </td>
                         <td><%= user.U_REG_DATE.toISOString().split('T')[0] %></td>
                         <td><%= user.U_MOD_DATE.toISOString().split('T')[0] %></td>
                         <td>
