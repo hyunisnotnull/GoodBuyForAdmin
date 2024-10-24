@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    <link href="/css/admin/modify_form.css" rel="stylesheet" type="text/css">
+    <script src="/js/admin/modify_form.js"></script>
+
+</head>
+<body>
+
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+    
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <h4>MODIFY FORM</h4>
+            </div>
+            <div class="content">
+                <form action="/admin/modify_confirm" name="modify_form" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="a_no" value="<%= admin.A_NO %>">
+                    <input type="hidden" name="a_id" value="<%= admin.A_ID %>">
+
+                    <input type="text" value="<%= admin.A_ID %>" readonly disabled><br>
+                    <input type="password" name="a_pw" placeholder="INPUT admin PW"><br>
+                    <input type="text" name="a_mail" value="<%= admin.A_MAIL %>"><br>
+                    <input type="text" name="a_phone" value="<%= admin.A_PHONE %>"><br>
+                    <input type="file" name="profile_thum" placeholder="SELECT PROFILE IMAGE"><br>
+                    <div class="profile_thum_wrap">
+                        <a href="#none">
+                            <%
+                                if (admin.A_PROFILE_THUM !== '') {
+                            %>
+                                    <img src="/<%=admin.A_ID%>/<%=admin.A_PROFILE_THUM%>">
+                            <%
+                                } else {
+                            %>
+                                    <img src="/img/default_profile_thum.png">
+                            <%
+                                }
+                            %>
+                        </a>
+                    </div>
+                    <br>
+                    CHANGE OR DELETE COVER PROFILE <input type="checkbox" name="cover_profile_thum_delete">
+                    <br><br>
+                    <input type="button" value="MODIFY" onclick="modifyForm();">
+                    <input type="button" value="RESET" onclick="resetForm();">
+                </form>
+            </div>
+
+        </div>
+    </article>
+
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

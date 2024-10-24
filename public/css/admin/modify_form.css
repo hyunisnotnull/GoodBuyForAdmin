@@ -1,0 +1,79 @@
+article div.article_wrap {
+    width: 1000px;
+    margin: 50px auto;
+}
+
+article div.title {
+    text-align: center;
+}
+
+article div.content {
+    margin-top: 10px;
+    text-align: center;
+}
+
+article div.content input {
+    width: 300px;
+    padding: 10px;
+    margin: 3px;
+}
+
+article div.content input[type="button"],
+article div.content input[type="reset"] {
+    width: 156px;
+}
+
+article div.content div.profile_thum_wrap {
+    width: 200px; height: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+article div.content input[name="cover_profile_thum_delete"] {
+    width: 20px;
+}
+
+article div.content input[name="profile_thum"] {
+    display: none;
+}
+
+/* PROFILE_MODAL_WRAP START */
+#profile_modal_wrap {
+	position: fixed;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	background-color: rgba(0, 0, 0, .7);
+    display: none;
+}
+
+#profile_modal_wrap div.profile_thum_close {
+    width: 1100px;
+    margin: 50px auto 5px;
+    text-align: right;
+}
+
+#profile_modal_wrap div.profile_thum_close a {
+    font-weight: bold;
+    color: #fff;
+}
+
+#profile_modal_wrap div.profile_thum {
+    display: flex;
+    width: 1100px;
+    margin: 0 auto;
+    padding: 15px 0;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#profile_modal_wrap div.profile_thum div.pre_btn,
+#profile_modal_wrap div.profile_thum div.next_btn {
+    width: 100px;
+    text-align: center;
+}
+
+#profile_modal_wrap div.profile_thum div.thum {
+    width: 900px;
+    text-align: center;
+}
+/* PROFILE_MODAL_WRAP END */

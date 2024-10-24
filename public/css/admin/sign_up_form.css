@@ -1,0 +1,24 @@
+article div.article_wrap {
+    width: 1000px;
+    margin: 50px auto;
+}
+
+article div.title {
+    text-align: center;
+}
+
+article div.content {
+    margin-top: 10px;
+    text-align: center;
+}
+
+article div.content input {
+    width: 300px;
+    padding: 10px;
+    margin: 3px;
+}
+
+article div.content input[type="button"],
+article div.content input[type="reset"] {
+    width: 156px;
+}

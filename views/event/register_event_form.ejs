@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    <link href="/css/event/register_event.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <h4>이벤트 등록</h4>
+    <form action="/event/register_event_confirm" name="register_event_form" method="POST" enctype="multipart/form-data">
+        <% if (eventId) { %>
+            <input type="hidden" name="event_id" value="<%= eventId %>">
+        <% } %>
+
+        <div>
+            <input type="text" name="title" placeholder="이벤트 제목" required>
+            <small>이벤트의 제목을 입력하세요.</small>
+        </div>
+        <div>
+            <input type="file" name="event_images" multiple required>
+            <small>이벤트에 사용될 이미지를 선택하세요 (최대 5개).</small>
+        </div>
+        <div>
+            <input type="text" name="url" placeholder="이벤트 URL" required>
+            <small>이벤트 이동 URL을 입력하세요.</small>
+        </div>
+        <div>
+            <textarea name="description" placeholder="이벤트 설명" required></textarea>
+            <small>이벤트에 대한 설명을 입력하세요.</small>
+        </div>
+        <div>
+            <input type="date" name="startDate" required>
+            <small>이벤트 시작 날짜를 선택하세요.</small>
+        </div>
+        <div>
+            <input type="date" name="endDate" required>
+            <small>이벤트 종료 날짜를 선택하세요.</small>
+        </div>
+        <button type="submit">이벤트 등록</button>
+    </form>
+
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

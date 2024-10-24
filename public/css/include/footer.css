@@ -1,0 +1,10 @@
+footer {
+    border-top: 1px solid #ccc;
+    background-color: rgba(200, 200, 200, .3);
+}
+
+footer div.footer_wrap {
+    text-align: center;
+    height: 100px; 
+    line-height: 100px;
+}

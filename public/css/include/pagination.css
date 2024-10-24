@@ -1,0 +1,26 @@
+div.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+div.pagination a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: 1px solid rgba(200, 200, 200, .6);
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+div.pagination a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+div.pagination a:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
