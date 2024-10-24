@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('../include/title.ejs') %>
     <link href="/css/event/events.css" rel="stylesheet" type="text/css">
+    <link href="/css/include/pagination.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <%- include('../include/header.ejs') %>
@@ -41,7 +42,7 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="/event/modify_event_form/<%= event.E_NO %>">수정</a>
+                                <a class="edit-link" href="/event/modify_event_form/<%= event.E_NO %>">수정</a>
                                 <form action="/event/delete_event_confirm" method="POST" style="display:inline;">
                                     <input type="hidden" name="eventId" value="<%= event.E_NO %>">
                                     <button type="submit">삭제</button>
@@ -52,6 +53,13 @@
                 </tbody>
             </table>
             <a href="/event/register_event_form">이벤트 등록</a>
+            <div class="pagination">
+                <% pagination.pageRange.forEach(page => { %>
+                    <a href="<%= pagination.baseUrl + page %>" class="<%= page === pagination.currentPage ? 'active' : '' %>">
+                        <%= page %>
+                    </a>
+                <% }) %>
+            </div>
         </div>
     </article>
 

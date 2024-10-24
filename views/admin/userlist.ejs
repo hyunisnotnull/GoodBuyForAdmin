@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('../include/title.ejs') %>
     <link href="/css/admin/userlist.css" rel="stylesheet" type="text/css">
+    <link href="/css/include/pagination.css" rel="stylesheet" type="text/css">
     <script src="/js/admin/edit_user_modal.js"></script>
 </head>
 <body>
@@ -25,6 +26,8 @@
                     <th>등급</th>
                     <th>포인트</th>
                     <th>패널티</th>
+                    <th>정지일</th>
+                    <th>해제일</th>
                     <th>포인트수정</th>
                 </tr>
             </thead>
@@ -67,6 +70,20 @@
                         <td><%= user.U_POINT %></td>
                         <td><%= user.U_PENALTY %></td>
                         <td>
+                            <% if (user.U_ACTIVE === 3) { %>
+                                <%= user.U_BAN_START_DATE ? user.U_BAN_START_DATE.toISOString().split('T')[0] : '' %>
+                            <% } else { %>
+                                <%= '' %>
+                            <% } %>
+                        </td>
+                        <td>
+                            <% if (user.U_ACTIVE === 3) { %>
+                                <%= user.U_BAN_END_DATE ? user.U_BAN_END_DATE.toISOString().split('T')[0] : '' %>
+                            <% } else { %>
+                                <%= '' %>
+                            <% } %>
+                        </td>
+                        <td>
                             <button 
                                 data-id="<%= user.U_ID %>" 
                                 data-point="<%= user.U_POINT %>" 
@@ -77,6 +94,14 @@
                 <% }) %>
             </tbody>
         </table>
+    </div>
+
+    <div class="pagination">
+        <% pagination.pageRange.forEach(page => { %>
+            <a href="<%= pagination.baseUrl + page %>" class="<%= page === pagination.currentPage ? 'active' : '' %>">
+                <%= page %>
+            </a>
+        <% }) %>
     </div>
 
     <div id="editModal" style="display: none;">
@@ -94,8 +119,6 @@
             <button type="button" onclick="closeEditModal()">취소</button>
         </form>
     </div>
-    
-    
 
     <%- include('../include/footer.ejs') %>
 </body>
