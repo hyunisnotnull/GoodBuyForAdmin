@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+/* 링크 스타일 */
+a {
+    color: #333; /* 링크 색상 */
+    text-decoration: none; /* 기본 밑줄 제거 */
+}
+
+a:hover {
+    text-decoration: underline; /* 호버 시 밑줄 추가 */
+}
