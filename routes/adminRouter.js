@@ -51,4 +51,9 @@ router.get('/userlist', (req, res) => {
 
 });
 
+router.post('/update_user', (req, res) => {
+    console.log('/admin/update_user');
+    adminService.updateUser(req, res); 
+});
+
 module.exports = router;
