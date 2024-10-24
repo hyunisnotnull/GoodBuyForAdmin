@@ -40,7 +40,7 @@ window.onload = function() {
         .then(data => {
             if (data.success) {
                 alert('수정 완료');
-                updateTable(userId, userPoint, userPenalty, data.grade); // 등급도 업데이트
+                updateTable(userId, userPoint, userPenalty, data.grade);
                 closeEditModal();
             } else {
                 alert('수정 실패: ' + data.message);
@@ -60,14 +60,9 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
     rows.forEach(row => {
         const idCell = row.querySelector('td:first-child');
         if (idCell.textContent === userId) {
-
             const stateCell = row.querySelector('td:nth-child(4)');
-            switch (newGrade) {
-                case 3: stateCell.textContent = '정지'; break;
-                case 2: stateCell.textContent = '활동중'; break;
-                case 1: stateCell.textContent = '삭제된 계정'; break;
-                default: stateCell.textContent = '삭제된 계정';
-            }
+            const activeStatus = determineActiveStatus(userPenalty);
+            stateCell.textContent = activeStatus; // 사용자 상태 업데이트
 
             const gradeCell = row.querySelector('td:nth-child(7)');
             switch (newGrade) {
@@ -83,6 +78,20 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
             row.querySelector('td:nth-child(8)').textContent = userPoint; // 포인트 업데이트
             row.querySelector('td:nth-child(9)').textContent = userPenalty; // 패널티 업데이트
 
+            // 정지일과 해제일 업데이트
+            if (userPenalty >= 3) {
+                const banDuration = Math.floor(userPenalty / 3);
+                const banStartDate = new Date();
+                const banEndDate = new Date();
+                banEndDate.setDate(banEndDate.getDate() + banDuration);
+
+                row.querySelector('td:nth-child(10)').textContent = banStartDate.toISOString().split('T')[0]; // 정지일 업데이트
+                row.querySelector('td:nth-child(11)').textContent = banEndDate.toISOString().split('T')[0]; // 해제일 업데이트
+            } else {
+                row.querySelector('td:nth-child(10)').textContent = '';
+                row.querySelector('td:nth-child(11)').textContent = ''; 
+            }
+
             const editButton = row.querySelector('button');
             editButton.setAttribute('data-point', userPoint);
             editButton.setAttribute('data-penalty', userPenalty);
@@ -90,6 +99,10 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
     });
 }
 
-
-
-
+// 사용자 상태를 결정하는 함수
+function determineActiveStatus(userPenalty) {
+    if (userPenalty >= 3) {
+        return '정지';
+    }
+    return '활동중'; // 기본적으로 활동중으로 설정
+}
