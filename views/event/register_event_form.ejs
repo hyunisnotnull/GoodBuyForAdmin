@@ -6,7 +6,7 @@
     <%- include('../include/title.ejs') %>
     <link href="/css/event/register_event.css" rel="stylesheet" type="text/css">
     <script src="/js/event/register_event.js"></script>
-
+    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 </head>
 <body>
 
@@ -32,7 +32,7 @@
             <small>이벤트 이동 URL을 입력하세요.</small>
         </div>
         <div>
-            <textarea name="description" placeholder="이벤트 설명" required></textarea>
+            <textarea name="description" id="description" placeholder="이벤트 설명" required></textarea>
             <small>이벤트에 대한 설명을 입력하세요.</small>
         </div>
         <div>

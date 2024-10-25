@@ -1,3 +1,4 @@
+/* register_event.css */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -30,7 +31,6 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-
 input[type="file"],
 textarea {
     width: 50%;
@@ -40,18 +40,12 @@ textarea {
     box-sizing: border-box;
 }
 
-
-
 input[type="date"] {
     width: 20%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-textarea {
-    height: 100px;
 }
 
 button {
@@ -76,4 +70,17 @@ small {
     display: block;
     color: #777;
     margin-top: 5px;
+}
+
+/* CKEditor 관련 CSS */
+.cke {
+    width: 50% !important; /* 원하는 너비 */
+}
+
+.cke textarea {
+    height: 300px !important; /* CKEditor 내부의 textarea 높이 */
+}
+
+#description {
+    height: 300px; /* 원하는 높이 */
 }
