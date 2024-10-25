@@ -1,0 +1,84 @@
+/* 전체적인 스타일 설정 */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 유저 리스트 랩 */
+.adminlist_wrap {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.adminlist_wrap h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; 
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+/* 헤더 셀 스타일 */
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* 권한 열과 승인 열의 고정 너비 설정 */
+td:nth-child(7), th:nth-child(7), 
+td:nth-child(8), th:nth-child(8) {
+    width: 120px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 반응형 테이블 */
+@media (max-width: 600px) {
+    th, td {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+}
+
+/* 수정 버튼 스타일 */
+button {
+    background-color: #007BFF; 
+    color: white;
+    padding: 10px 15px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* 버튼 호버 효과 */
+button:hover {
+    background-color: #0056b3; 
+    transform: translateY(-2px); 
+}
+
+/* 버튼 클릭 시 효과 */
+button:active {
+    transform: translateY(0); 
+}

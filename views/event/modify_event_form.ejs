@@ -6,6 +6,8 @@
     <%- include('../include/title.ejs') %>
     <link href="/css/admin/admin.css" rel="stylesheet" type="text/css">
     <link href="/css/event/register_event.css" rel="stylesheet" type="text/css">
+    <script src="/js/event/modify_event.js"></script>
+
 </head>
 <body>
 
@@ -23,17 +25,21 @@
             <small>새로운 이미지를 선택하세요 (최대 5개). 기존 이미지는 삭제되지 않습니다.</small>
         </div>
         <div>
+            <input type="text" name="url" value="<%= event.E_URL %>" placeholder="이벤트 URL" required>
+            <small>이벤트 이동 URL을 수정하세요.</small>
+        </div>
+        <div>
             <textarea name="description" placeholder="이벤트 설명" required><%= event.E_DESC %></textarea>
             <small>이벤트에 대한 설명을 수정하세요.</small>
         </div>
         <div>
-            <input type="date" name="startDate" value="<%= event.E_START_DATE.toISOString().split('T')[0] %>" required>
+            <input type="datetime-local" name="startDate" value="<%= event.E_START_DATE.toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16) %>" disabled required>
             <small>이벤트 시작 날짜를 수정하세요.</small>
         </div>
         <div>
-            <input type="date" name="endDate" value="<%= event.E_END_DATE.toISOString().split('T')[0] %>" required>
+            <input type="datetime-local" name="endDate" value="<%= event.E_END_DATE.toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16) %>" required>
             <small>이벤트 종료 날짜를 수정하세요.</small>
-        </div>
+        </div>  
         <button type="submit">이벤트 수정</button>
     </form>
 

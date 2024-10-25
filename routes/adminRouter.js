@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const adminService = require('../lib/service/adminService');
 const uploads = require('../lib/upload/uploads');
+const roleCheck = require('../lib/passport/roleCheck');
 
 router.get('/sign_up_form', (req, res) => {
     console.log('/admin/sign_up_form');
@@ -45,15 +46,41 @@ router.get('/delete_confirm', (req, res) => {
 
 });
 
-router.get('/userlist', (req, res) => {
+// USER LIST START
+router.get('/userlist', roleCheck('ADMIN', 'SUPER_ADMIN'), (req, res) => {
     console.log('/admin/userlist');
     adminService.userlist(req, res);
 
 });
 
-router.post('/update_user', (req, res) => {
+router.post('/update_user', roleCheck('ADMIN', 'SUPER_ADMIN'), (req, res) => {
     console.log('/admin/update_user');
     adminService.updateUser(req, res); 
+});
+
+// SUPER ADMIN START
+router.get('/adminlist', roleCheck('SUPER_ADMIN'), (req, res) => {
+    console.log('/admin/adminlist');
+    adminService.adminlist(req, res);
+
+});
+
+// 승인 처리
+router.post('/approve_admin', roleCheck('SUPER_ADMIN'), (req, res) => {
+    console.log('/admin/approve_admin');
+    adminService.approveAdmin(req, res);
+});
+
+// 미승인 처리
+router.post('/disapprove_admin', roleCheck('SUPER_ADMIN'), (req, res) => {
+    console.log('/admin/disapprove_admin');
+    adminService.disapproveAdmin(req, res);
+});
+
+// 특정 관리자 정보
+router.get('/get_admin/:id', (req, res) => {
+    console.log('/admin/get_admin');
+    adminService.getAdminById(req, res);
 });
 
 module.exports = router;
