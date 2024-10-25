@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
+    CKEDITOR.replace('description', {
+        height: 300, 
+        enterMode: CKEDITOR.ENTER_BR, 
+        shiftEnterMode: CKEDITOR.ENTER_BR, 
+        resize_enabled: false, 
+        width: '100%', 
+    });
+    
     const endDateInput = document.querySelector('input[name="endDate"]');
     const form = document.querySelector('form');
 
