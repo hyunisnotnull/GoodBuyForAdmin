@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    <link href="/css/admin/adminlist.css" rel="stylesheet" type="text/css">
+    <link href="/css/include/pagination.css" rel="stylesheet" type="text/css">
+    
+    <script src="/js/admin/approve_role.js"></script>
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <div class="adminlist_wrap">
+        <h2>관리자 리스트</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>ID</th>
+                    <th>메일</th>
+                    <th>연락처</th>
+                    <th>등록일</th>
+                    <th>수정일</th>
+                    <th>권한</th>
+                    <th>승인</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% admins.forEach(admin => { %>
+                    <tr>
+                        <td><%= admin.A_NO %></td>
+                        <td><%= admin.A_ID %></td>
+                        <td><%= admin.A_MAIL %></td>
+                        <td><%= admin.A_PHONE %></td>
+                        <td><%= admin.A_REG_DATE.toISOString().split('T')[0] %></td>
+                        <td><%= admin.A_MOD_DATE.toISOString().split('T')[0] %></td>
+                        <td><%= admin.A_ROLE %></td>
+                        <td>
+                            <% if (admin.A_ROLE === 'PRE_ADMIN') { %>
+                                <button onclick="approveAdmin('<%= admin.A_NO %>')">승인</button>
+                            <% } else if (admin.A_ROLE === 'ADMIN') { %>
+                                <button onclick="disapproveAdmin('<%= admin.A_NO %>')">미승인</button>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <% pagination.pageRange.forEach(page => { %>
+            <a href="<%= pagination.baseUrl + page %>" class="<%= page === pagination.currentPage ? 'active' : '' %>">
+                <%= page %>
+            </a>
+        <% }) %>
+    </div>
+
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

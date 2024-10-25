@@ -6,6 +6,8 @@ const session = require('express-session');
 const Memorystore = require('memorystore')(session);
 const path = require('path');
 const pp = require('./lib/passport/passport');
+const { scheduleEventDeactivation } = require('./lib/config/cronJobs');
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(compression());
@@ -56,5 +58,8 @@ app.use('/admin', adminRouter);
 
 const eventRouter = require('./routes/eventRouter');
 app.use('/event', eventRouter);
+
+// scheduler
+scheduleEventDeactivation();
 
 app.listen(3002);

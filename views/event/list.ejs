@@ -6,6 +6,9 @@
     <%- include('../include/title.ejs') %>
     <link href="/css/event/events.css" rel="stylesheet" type="text/css">
     <link href="/css/include/pagination.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/event/list.js"></script>
+
 </head>
 <body>
     <%- include('../include/header.ejs') %>
@@ -32,10 +35,11 @@
                             <td><%= event.E_TITLE %></td>
                             <td><img src="/<%= event.E_NO %>/<%= event.E_IMAGE %>" alt="<%= event.E_TITLE %>" width="100" /></td>
                             <td><%= event.E_DESC %></td>
-                            <td><%= event.E_START_DATE.toISOString().split('T')[0] %></td>
-                            <td><%= event.E_END_DATE.toISOString().split('T')[0] %></td>
+                            <td><%= event.E_START_DATE %></td>
+                            <td><%= event.E_END_DATE %></td>
                             <td>
-                                <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;">
+                                <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;"
+                                    onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 2 ? '비활성화' : '활성화' %>`);">
                                     <button type="submit">
                                         <%= event.E_ACTIVE === 2 ? '활성화' : '비활성화' %>
                                     </button>
