@@ -31,6 +31,8 @@
                 </thead>
                 <tbody>
                     <% events.forEach(event => { %>
+                        <% const endDate = new Date(event.originalEndDate); %>
+                        <% const isExpired = endDate < new Date(); %>
                         <tr>
                             <td><%= event.E_TITLE %></td>
                             <td><img src="/<%= event.E_NO %>/<%= event.E_IMAGE %>" alt="<%= event.E_TITLE %>" width="100" /></td>
@@ -39,11 +41,11 @@
                             <td><%= event.E_END_DATE %></td>
                             <td>
                                 <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;"
-                                    onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 2 ? '비활성화' : '활성화' %>`);">
-                                    <button type="submit">
+                                        onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 2 ? '비활성화' : '활성화' %>`, `<%= isExpired ? 'true' : 'false' %>`);">
+                                    <button type="submit" <%= isExpired ? 'disabled' : '' %> >
                                         <%= event.E_ACTIVE === 2 ? '활성화' : '비활성화' %>
                                     </button>
-                                </form>
+                              </form>
                             </td>
                             <td>
                                 <a class="edit-link" href="/event/modify_event_form/<%= event.E_NO %>">수정</a>

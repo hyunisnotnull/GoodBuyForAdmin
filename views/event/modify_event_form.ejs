@@ -33,7 +33,7 @@
             <small>이벤트에 대한 설명을 수정하세요.</small>
         </div>
         <div>
-            <input type="datetime-local" name="startDate" value="<%= event.E_START_DATE.toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16) %>" disabled required>
+            <input type="datetime-local" name="startDate" value="<%= event.E_START_DATE.toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16) %>" readonly required>
             <small>이벤트 시작 날짜를 수정하세요.</small>
         </div>
         <div>
