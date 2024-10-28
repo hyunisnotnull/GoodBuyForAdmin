@@ -96,13 +96,12 @@
         </table>
     </div>
 
-    <div class="pagination">
-        <% pagination.pageRange.forEach(page => { %>
-            <a href="<%= pagination.baseUrl + page %>" class="<%= page === pagination.currentPage ? 'active' : '' %>">
-                <%= page %>
-            </a>
-        <% }) %>
-    </div>
+    <%- include('../include/pagination.ejs', {
+        currentPage: pagination.currentPage,
+        totalPages: pagination.totalPages,
+        pageRange: pagination.pageRange,
+        baseUrl: pagination.baseUrl
+    }) %>
 
     <div id="editModal" style="display: none;">
         <form id="editForm">
