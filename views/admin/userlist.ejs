@@ -41,9 +41,9 @@
                             <% 
                             let active; 
                             switch (user.U_ACTIVE) {
-                                case 1: active = '삭제된 계정'; break;
-                                case 2: active = '활동중'; break;
-                                case 3: active = '정지'; break;
+                                case 0: active = '삭제된 계정'; break;
+                                case 1: active = '활동중'; break;
+                                case 2: active = '정지'; break;
                                 default: active = 'UNKNOWN'; 
                             }
                             %>
