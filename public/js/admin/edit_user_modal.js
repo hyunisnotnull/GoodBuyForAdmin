@@ -72,7 +72,7 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
                 case 4: gradeCell.textContent = 'SILVER'; break;
                 case 3: gradeCell.textContent = 'BRONZE'; break;
                 case 2: gradeCell.textContent = 'IRON'; break;
-                default: gradeCell.textContent = 'STOP';
+                default: gradeCell.textContent = 'UNRANK';
             }
 
             row.querySelector('td:nth-child(8)').textContent = userPoint; // 포인트 업데이트

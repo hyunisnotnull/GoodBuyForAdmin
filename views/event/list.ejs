@@ -41,9 +41,9 @@
                                 <% const endDate = new Date(event.originalEndDate); %>
                                 <% const isExpired = endDate < new Date(); %>
                                 <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;"
-                                        onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 2 ? '비활성화' : '활성화' %>`, `<%= isExpired ? 'true' : 'false' %>`);">
+                                        onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 1 ? '비활성화' : '활성화' %>`, `<%= isExpired ? 'true' : 'false' %>`);">
                                     <button type="submit">
-                                        <%= event.E_ACTIVE === 2 ? '활성화' : '비활성화' %>
+                                        <%= event.E_ACTIVE === 1 ? '활성화' : '비활성화' %>
                                     </button>
                               </form>
                             </td>

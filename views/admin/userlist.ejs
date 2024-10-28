@@ -62,7 +62,7 @@
                                 case 5: grade = 'GOLD'; break;
                                 case 6: grade = 'PLATINUM'; break;
                                 case 7: grade = 'DIAMOND'; break;
-                                default: grade = 'UNKNOWN'; 
+                                default: grade = 'UNRANK'; 
                             }
                             %>
                             <%= grade %>
@@ -70,14 +70,14 @@
                         <td><%= user.U_POINT %></td>
                         <td><%= user.U_PENALTY %></td>
                         <td>
-                            <% if (user.U_ACTIVE === 3) { %>
+                            <% if (user.U_ACTIVE === 2) { %>
                                 <%= user.U_BAN_START_DATE ? user.U_BAN_START_DATE.toISOString().split('T')[0] : '' %>
                             <% } else { %>
                                 <%= '' %>
                             <% } %>
                         </td>
                         <td>
-                            <% if (user.U_ACTIVE === 3) { %>
+                            <% if (user.U_ACTIVE === 2) { %>
                                 <%= user.U_BAN_END_DATE ? user.U_BAN_END_DATE.toISOString().split('T')[0] : '' %>
                             <% } else { %>
                                 <%= '' %>
