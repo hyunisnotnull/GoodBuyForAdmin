@@ -49,14 +49,13 @@
                 <% }) %>
             </tbody>
         </table>
+        <%- include('../include/pagination.ejs', {
+            currentPage: pagination.currentPage,
+            totalPages: pagination.totalPages,
+            pageRange: pagination.pageRange,
+            baseUrl: pagination.baseUrl
+        }) %>
     </div>
-
-    <%- include('../include/pagination.ejs', {
-        currentPage: pagination.currentPage,
-        totalPages: pagination.totalPages,
-        pageRange: pagination.pageRange,
-        baseUrl: pagination.baseUrl
-    }) %>
 
     <%- include('../include/footer.ejs') %>
 </body>

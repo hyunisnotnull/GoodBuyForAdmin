@@ -55,13 +55,13 @@
                             <% 
                             let grade; 
                             switch (user.U_CLASS) {
-                                case 1: grade = 'STOP'; break;
-                                case 2: grade = 'IRON'; break;
-                                case 3: grade = 'BRONZE'; break;
-                                case 4: grade = 'SILVER'; break;
-                                case 5: grade = 'GOLD'; break;
-                                case 6: grade = 'PLATINUM'; break;
-                                case 7: grade = 'DIAMOND'; break;
+                                case 0: grade = 'UNRANK'; break;
+                                case 1: grade = 'IRON'; break;
+                                case 2: grade = 'BRONZE'; break;
+                                case 3: grade = 'SILVER'; break;
+                                case 4: grade = 'GOLD'; break;
+                                case 5: grade = 'PLATINUM'; break;
+                                case 6: grade = 'DIAMOND'; break;
                                 default: grade = 'UNRANK'; 
                             }
                             %>
@@ -94,14 +94,13 @@
                 <% }) %>
             </tbody>
         </table>
+        <%- include('../include/pagination.ejs', {
+            currentPage: pagination.currentPage,
+            totalPages: pagination.totalPages,
+            pageRange: pagination.pageRange,
+            baseUrl: pagination.baseUrl
+        }) %>
     </div>
-
-    <%- include('../include/pagination.ejs', {
-        currentPage: pagination.currentPage,
-        totalPages: pagination.totalPages,
-        pageRange: pagination.pageRange,
-        baseUrl: pagination.baseUrl
-    }) %>
 
     <div id="editModal" style="display: none;">
         <form id="editForm">
