@@ -49,9 +49,9 @@
                             </td>
                             <td>
                                 <a class="edit-link" href="/event/modify_event_form/<%= event.E_NO %>">수정</a>
-                                <form action="/event/delete_event_confirm" method="POST" style="display:inline;">
+                                <form action="/event/delete_event_confirm" name="delete_event_confirm" method="POST" style="display:inline;">
                                     <input type="hidden" name="eventId" value="<%= event.E_NO %>">
-                                    <button type="submit">삭제</button>
+                                    <button type="submit" onclick="return deleteConfirm();">삭제</button>
                                 </form>
                             </td>
                         </tr>

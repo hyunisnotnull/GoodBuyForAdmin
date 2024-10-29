@@ -1,5 +1,5 @@
 function confirmStatusChange(event, action, isExpired) {
-    console.log("Button clicked"); // 확인용 로그
+    console.log("Button clicked");
     isExpired = (isExpired === 'true');
 
     if (isExpired) {
@@ -14,4 +14,10 @@ function confirmStatusChange(event, action, isExpired) {
     }
     
     return confirmation; 
+}
+
+function deleteConfirm() {
+    console.log("deleteConfirm() clicked");
+
+    return confirm("정말로 삭제하시겠습니까?");
 }
