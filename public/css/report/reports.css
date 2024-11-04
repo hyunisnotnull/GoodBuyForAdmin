@@ -1,0 +1,133 @@
+/* events.css */
+
+/* 전체적인 스타일 설정 */
+body {
+    font-family: 'Roboto', sans-serif; /* 좀 더 세련된 폰트 사용 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 이벤트 목록 랩 */
+.reports_wrap {
+    max-width: 1200px; /* 넓은 폭 */
+    margin: 40px auto; /* 여백 추가 */
+    padding: 20px;
+    background: white;
+    border-radius: 8px; /* 부드러운 모서리 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
+}
+
+/* 제목 스타일 */
+.reports_wrap h2 {
+    text-align: center;
+    color: #333;
+    font-size: 2em; /* 크기 조정 */
+    margin-bottom: 20px; /* 제목 아래 여백 */
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px; /* 패딩 조정 */
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle; /* 세로 정렬을 중앙으로 조정 */
+}
+
+th {
+    background-color: #4CAF50; /* 헤더 배경 색상 */
+    color: white; /* 글자 색상 */
+    font-weight: bold; /* 두껍게 */
+    padding: 10px; /* 패딩 추가 */
+    text-align: left; /* 텍스트 정렬 */
+}
+
+td {
+    max-width: 200px; /* 최대 너비 설정 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    text-overflow: ellipsis; /* 생략 부호 표시 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+td img {
+    border-radius: 8px; /* 이미지를 둥글게 */
+    max-width: 50px; /* 이미지 최대 너비 제한 */
+    height: auto; /* 비율 유지 */
+    display: block; /* 블록 요소로 설정하여 정렬 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+td:nth-child(4),
+td:nth-child(5),
+th:nth-child(6) {
+    width: 130px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 버튼 스타일 */
+button, .edit-link {
+    background-color: #2196F3; /* 기본 버튼 색상 */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* 패딩 조정 */
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em; /* 폰트 크기 조정 */
+    transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
+    text-decoration: none; /* 기본 링크 밑줄 제거 */
+    display: inline-block; /* 블록 요소로 설정하여 정렬 */
+}
+
+button:hover, .edit-link:hover {
+    background-color: #1976D2; /* 호버 시 색상 */
+}
+
+/* 링크 스타일 */
+.edit-link {
+    background-color: #2196F3; /* 기본 버튼 색상 */
+    color: white;
+    padding: 8px 12px; /* 패딩 추가 */
+    border-radius: 4px; /* 둥근 모서리 */
+    text-decoration: none; /* 기본 링크 밑줄 제거 */
+    display: inline-block; /* 블록 요소로 설정하여 정렬 */
+    transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.edit-link:hover {
+    background-color: #1976D2; /* 호버 시 색상 */
+    text-decoration: none;
+}
+
+/* 추가 버튼 스타일 */
+a[href="/event/register_event_form"] {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #ff5722; /* 추가 버튼 색상 */
+    padding: 10px 15px;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+a[href="/event/register_event_form"]:hover {
+    background-color: #e64a19; /* 호버 시 색상 */
+}
+
+/* 반응형 테이블 */
+@media (max-width: 600px) {
+    th, td {
+        font-size: 0.9em; /* 작은 화면에서 글자 크기 감소 */
+        padding: 8px; /* 패딩 줄이기 */
+    }
+
+    img {
+        max-width: 80px; /* 작은 화면에서 이미지 크기 줄이기 */
+    }
+}
+

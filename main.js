@@ -59,6 +59,9 @@ app.use('/admin', adminRouter);
 const eventRouter = require('./routes/eventRouter');
 app.use('/event', eventRouter);
 
+const reportRouter = require('./routes/reportRouter');
+app.use('/report', reportRouter);
+
 // scheduler
 scheduleEventDeactivation();
 
