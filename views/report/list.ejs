@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    <link href="/css/report/reports.css" rel="stylesheet" type="text/css">
+    <link href="/css/include/pagination.css" rel="stylesheet" type="text/css">
+
+    <script src="/js/report/list.js"></script>
+
+</head>
+<body>
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <article>
+        <div class="reports_wrap">
+            <h2>신고 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>신고글</th>
+                        <th>신고자</th>
+                        <th>신고글 상태</th>
+                        <th>신고일</th>
+                        <th>수정일</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% reports.forEach(report => { %>
+                        <tr>
+                            <td><%= report.R_NO %></td>
+                            <td><%= report.P_NAME %></td>
+                            <td><%= report.U_NICK %></td>
+                            <td><%= report.R_STATE %></td>
+                            <td><%= report.R_REG_DATE %></td>
+                            <td><%= report.R_MOD_DATE %></td>
+                            <td>
+                                <a class="edit-link" href="/report/modify_report_form/<%= report.E_NO %>">수정</a>
+                                <form action="/report/delete_report_confirm" name="delete_report_confirm" method="POST" style="display:inline;">
+                                    <input type="hidden" name="reportId" value="<%= report.E_NO %>">
+                                    <button type="submit" onclick="return deleteConfirm();">삭제</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <%- include('../include/pagination.ejs', {
+                currentPage: pagination.currentPage,
+                totalPages: pagination.totalPages,
+                pageRange: pagination.pageRange,
+                baseUrl: pagination.baseUrl
+            }) %>
+        </div>
+    </article>
+
+    <%- include('../include/footer.ejs') %>
+</body>
+</html>

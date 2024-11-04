@@ -5,7 +5,7 @@ const uploads = require('../lib/upload/uploads');
 
 // 이벤트 목록 페이지
 router.get('/list', (req, res) => {
-    console.log('/admin/list');
+    console.log('/event/list');
     eventService.list(req, res);
 });
 
