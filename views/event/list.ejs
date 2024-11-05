@@ -25,7 +25,11 @@
                         <th>설명</th>
                         <th>시작일</th>
                         <th>종료일</th>
-                        <th>상태</th>
+                        <th>
+                            <a href="/event/list?sort=E_ACTIVE&order=<%= sortOrder === 'asc' ? 'desc' : 'asc' %>">
+                                상태
+                            </a>
+                        </th>
                         <th>관리</th>
                     </tr>
                 </thead>

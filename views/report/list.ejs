@@ -20,29 +20,42 @@
             <table>
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th>
+                            <a href="/report/list?sort=R_NO&order=<%= sortOrder === 'asc' ? 'desc' : 'asc' %>">
+                                No
+                            </a>
+                        </th>
                         <th>신고글</th>
                         <th>신고자</th>
                         <th>신고글 상태</th>
                         <th>신고일</th>
                         <th>수정일</th>
-                        <th>관리</th>
+                        <th>
+                            <a href="/report/list?sort=R_CHECK&order=<%= sortOrder === 'asc' ? 'desc' : 'asc' %>">
+                                관리
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     <% reports.forEach(report => { %>
                         <tr>
                             <td><%= report.R_NO %></td>
-                            <td><%= report.P_NAME %></td>
+                            <td><a href="http://localhost:3001/product/detail_product_form?p_no=<%= report.P_NO %>"><%= report.P_NAME %></a></td>
                             <td><%= report.U_NICK %></td>
-                            <td><%= report.R_STATE %></td>
+                            <td><%= report.ST_NAME %></td>
                             <td><%= report.R_REG_DATE %></td>
                             <td><%= report.R_MOD_DATE %></td>
                             <td>
-                                <a class="edit-link" href="/report/modify_report_form/<%= report.E_NO %>">수정</a>
-                                <form action="/report/delete_report_confirm" name="delete_report_confirm" method="POST" style="display:inline;">
-                                    <input type="hidden" name="reportId" value="<%= report.E_NO %>">
-                                    <button type="submit" onclick="return deleteConfirm();">삭제</button>
+                                <form action="/report/report_check/<%= report.R_NO %>" method="POST" style="display:inline;">
+                                    <% if (report.R_CHECK === 0) { %>  <!-- 신고 상태가 0일 경우 -->
+                                        <button type="submit">승인</button>
+                                        <button type="button" onclick="rejectReport(`<%= report.R_NO %>`)">반려</button>
+                                    <% } else if (report.R_CHECK === 1) { %>  <!-- 승인된 상태 -->
+                                        <span>승인됨</span>
+                                    <% } else if (report.R_CHECK === 2) { %>  <!-- 반려된 상태 -->
+                                        <span>반려됨</span>
+                                    <% } %>
                                 </form>
                             </td>
                         </tr>
