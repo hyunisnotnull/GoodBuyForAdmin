@@ -9,9 +9,9 @@ router.get('/list', (req, res) => {
 });
 
 // 신고 상태 변경 처리
-router.post('/report_status/:id', (req, res) => {
-    console.log('/report/report_status');
-    reportService.reportStatus(req, res);
+router.post('/report_check/:id', (req, res) => {
+    console.log('/report/report_check');
+    reportService.reportCheck(req, res);
 });
 
 module.exports = router;
