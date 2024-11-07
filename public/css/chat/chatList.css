@@ -1,0 +1,112 @@
+
+.article_wrap {
+    width: 100%;
+    max-width: 500px;
+    height: 79vh; 
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px auto; 
+}
+
+.article_wrap .title h4 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.article_wrap .content {
+    padding: 0;
+}
+
+.article_wrap ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article_wrap li {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.article_wrap li:hover {
+    background-color: #f7f7f7;
+}
+
+.article_wrap a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    width: 100%;
+}
+
+.article_wrap .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 15%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.article_wrap .chat-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.article_wrap .chat-info .chat-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article_wrap .chat-info .chat-last-message {
+    font-size: 0.9rem;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article_wrap .chat-time {
+    font-size: 0.8rem;
+    color: #888;
+    min-width: 60px;
+    text-align: right;
+}
+
+.article_wrap .unread-badge {
+    background-color: #ff3b30;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+/* 스크롤바 스타일 */
+.content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: transparent;
+}

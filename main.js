@@ -7,14 +7,23 @@ const Memorystore = require('memorystore')(session);
 const path = require('path');
 const pp = require('./lib/passport/passport');
 const { scheduleEventDeactivation, scheduleBanDeactivation } = require('./lib/config/cronJobs');
+const cors = require('cors');
 
+// Socket.IO 설정
+const http = require('http');
+const server = http.createServer(app);
+const { initSocket } = require('./lib/socket/socket');
 
+// Socket.io 초기화
+initSocket(server);
+
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('c:\\goodbuyforadmin\\upload\\profile_thums\\'));
 app.use(express.static('c:\\goodbuyforadmin\\upload\\event_images\\'));
-
+app.use('/uploads/chat_images', express.static('c:\\goodbuy\\upload\\chat_images\\'));
 app.use(express.json());
 
 // session
@@ -62,8 +71,12 @@ app.use('/event', eventRouter);
 const reportRouter = require('./routes/reportRouter');
 app.use('/report', reportRouter);
 
+const chatRouter = require('./routes/chatRouter');
+app.use('/chat', chatRouter);
+
+
 // scheduler
 scheduleEventDeactivation();
 scheduleBanDeactivation();
 
-app.listen(3002);
+server.listen(3002);

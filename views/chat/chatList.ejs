@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+
+    <link href="/css/chat/chatList.css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <h4>My Chat Rooms</h4>
+            </div>
+            <div class="content">
+                <ul>
+                    <% if (chattingRooms.length > 0) { %>
+                        <% chattingRooms.forEach(function(room) { %>
+                            <li>
+                                <a href="/chat/chat/<%= room.AC_NO %>">
+                                    <img src="\<%= room.otherId %>\<%= room.otherthum %>" alt="프로필" class="profile-image">
+                                    <div class="chat-info">
+                                        <div class="chat-name"><%= room.otherNick %></div>
+                                    </div>
+                                    <div class="chat-info">
+                                        <div class="chat-last-message"><%= room.CH_TITLE %></div>
+                                    </div>
+                                    <div class="chat-time"><%= room.lastMessageTime %></div>
+                                    <% if (room.CH_UNREAD_COUNT > 0) { %>
+                                        <span class="unread-badge"><%= room.CH_UNREAD_COUNT %></span>
+                                    <% } %>
+                                </a>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li>참여 중인 채팅방이 없습니다.</li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </article>
+    
+    <%- include('../include/footer.ejs') %>
+
+</body>
+</html>

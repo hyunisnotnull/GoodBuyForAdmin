@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    
+    <link href="/css/chat/chat.css" rel="stylesheet" type="text/css">
+    <script src="/socket.io/socket.io.js"></script>
+
+    <style>
+        /* 모달 기본 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 모달 안의 이미지 스타일 */
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 8px;
+        }
+
+        /* 닫기 버튼 스타일 */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <button onclick="goBack();" class="back-button">&larr;</button>&nbsp;&nbsp;
+                <button onclick="deleteChat();" class="back-button">&times;</button>
+            </div>
+            <div class="content">
+                <div class="chat-header">
+                    <% if (otherthum !== '') { %>
+                        <img src="/<%= otherId %>/<%= otherthum %>" class="profile-image">
+                    <% } else { %>
+                        <img src="/img/default_profile_thum.png" class="profile-image">
+                    <% } %>
+                    <div class="user-info">
+                        <h3 class="username"><%= otherNick %></h3>
+                    </div>
+                </div>
+
+                
+                <div id="chatWindow" class="chat-window"></div>
+
+                
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="메시지를 입력하세요..." class="message-input">
+                    <input type="file" id="imageInput" style="display: none;" accept="image/*">
+                    <button onclick="document.getElementById('imageInput').click();" class="send-button">사진 업로드</button>
+                    <button onclick="sendMessage()" class="send-button">전송</button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- 모달 구조 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        const roomId = '<%= roomId %>';
+        const senderId = '<%= loginedUser.U_ID %>';
+        const senderNick = '<%= loginedUser.U_NICK %>';
+        const otherId = '<%= otherId %>';
+        const otherNick = '<%= otherNick %>';
+        const otherthum = '<%= otherthum %>';
+        const lastExitTime = '<%= lastExitTime %>';
+        const isAdminChat = '<%= isAdminChat %>';
+
+        // 모달 관련 요소 선택
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+        const closeModal = document.getElementsByClassName("close")[0];
+
+        // 채팅창 이미지 클릭 이벤트
+        document.addEventListener("click", (event) => {
+            if (event.target.classList.contains("chat-image")) { // 이미지가 클릭될 때
+                modal.style.display = "flex"; // 모달 창 표시
+                modalImage.src = event.target.src; // 클릭된 이미지의 src를 모달 이미지로 설정
+            }
+        });
+
+        // 닫기 버튼 클릭 이벤트
+        closeModal.onclick = function() {
+            modal.style.display = "none"; // 모달 창 숨기기
+        };
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+
+    <script src="/js/chat/chatClient.js"></script>
+
+    <%- include('../include/footer.ejs') %>
+
+</body>
+</html>

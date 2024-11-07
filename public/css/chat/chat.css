@@ -1,0 +1,229 @@
+/* 채팅 레이아웃 및 크기 조정 */
+article {
+    margin: 20px 0;
+}
+
+.article_wrap {
+    display: flex;
+    flex-direction: column;
+    height: 79vh;
+    max-width: 500px;
+    margin: auto;
+    background-color: #e5efff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* 제목 영역 */
+.title {
+    padding: 10px;
+    font-size: 16px;
+    text-align: right;
+    background-color: #dde9f7;
+    border-bottom: 1px solid #c8d9ef;
+}
+
+/* 채팅 메시지와 입력창 컨테이너 */
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 프로필 이미지 스타일 */
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* 유저 이름 스타일 */
+.username {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+/* 채팅 헤더 스타일 */
+.chat-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #dde9f7;
+    border-bottom: 1px solid #c8d9ef;
+}
+
+.chat-header .back-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* 채팅창 메시지 목록 */
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    padding: 5px;
+    background-color: #e5efff;
+}
+
+/* 메시지 그룹 스타일 */
+.other-message-group, .my-message-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    margin-bottom: 10px;
+}
+
+
+
+/* 상대방 메시지 그룹: 왼쪽 정렬 */
+.other-message-group {
+    align-items: flex-start;
+    margin-right: auto; /* 왼쪽 정렬 */
+}
+
+/* 내 메시지 그룹: 오른쪽 정렬 */
+.my-message-group {
+    align-items: flex-end;
+    margin-left: auto; /* 오른쪽 정렬 */
+}
+
+/* 프로필과 닉네임 컨테이너 */
+.profile-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* 메시지와 간격 */
+}
+
+/* 프로필 이미지 */
+.chat-profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* 닉네임 스타일 */
+.message-user {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 메시지 말풍선 스타일 */
+.other-message,
+.my-message {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.my-message{
+    text-align: right;
+}
+
+.other-message{
+    text-align: left;
+}
+
+.message-text {
+    padding: 7px 11px;
+    font-size: 14px;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+.chat-image {
+    padding: 2px;
+    max-width: 70%;
+    border-radius: 10px;
+}
+
+/* 상대방의 메시지 말풍선: 왼쪽 */
+.other-message .message-text {
+    background-color: #ffffff;
+    color: #000;
+    border-radius: 10px 10px 10px 0;
+}
+
+/* 내 메시지 말풍선: 오른쪽 */
+.my-message .message-text {
+    background-color: #fef28a;
+    color: #000;
+    border-radius: 10px 10px 0 10px;
+}
+
+/* 메시지의 시간 위치 */
+.other-message-group .message-time {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.my-message-group .message-time {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* 입력창 스타일 */
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #c8d9ef;
+    background-color: #dde9f7;
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.message-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    background-color: #fff;
+}
+
+.send-button {
+    margin-left: 10px;
+    background-color: #fef28a;
+    border: none;
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-button:hover {
+    background-color: #ffe033;
+}
+
+/* 스크롤바 스타일 */
+.chat-window::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-window::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+.chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
