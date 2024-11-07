@@ -62,6 +62,9 @@ app.use('/event', eventRouter);
 const reportRouter = require('./routes/reportRouter');
 app.use('/report', reportRouter);
 
+const statRouter = require('./routes/statRouter');
+app.use('/stat', statRouter);
+
 // scheduler
 scheduleEventDeactivation();
 scheduleBanDeactivation();
