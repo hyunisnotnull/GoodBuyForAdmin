@@ -74,6 +74,8 @@ app.use('/report', reportRouter);
 const chatRouter = require('./routes/chatRouter');
 app.use('/chat', chatRouter);
 
+const statRouter = require('./routes/statRouter');
+app.use('/stat', statRouter);
 
 // scheduler
 scheduleEventDeactivation();
