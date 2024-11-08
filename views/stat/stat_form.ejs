@@ -16,41 +16,39 @@
     <%- include('../include/nav.ejs') %>
 
     <article>
-        <!-- 필터 옵션 (연령대, 성별, 랭크) -->
-        <form action="/stat" method="get">
-            <select name="age">
-                <option value="all">전체 연령대</option>
-                <option value="10">10대</option>
-                <option value="20">20대</option>
-                <option value="30">30대</option>
-                <option value="40">40대</option>
-                <option value="50">50대</option>
-                <option value="60">60대</option>
-                <!-- 더 많은 연령대 옵션 추가 -->
-            </select>
 
-            <select name="sex">
-                <option value="all">전체 성별</option>
-                <option value="M">남성</option>
-                <option value="F">여성</option>
-            </select>
+        <div class="card">
+            <form action="/stat" method="get">
+                <h3>옵션</h3>
+                <div class="filter-group">
+                    <select name="age">
+                        <option value="all">전체 연령대</option>
+                        <% filterData.age.forEach(function(age) { %>
+                            <option value="<%= age.age %>"><%= age.age %>대</option>
+                        <% }); %>
+                    </select>
 
-            <select name="rank">
-                <option value="all">전체 랭크</option>
-                <option value="1">IRON</option>
-                <option value="2">BRONZE</option>
-                <option value="3">SILVER</option>
-                <option value="4">GOLD</option>
-                <option value="5">PLATINUM</option>
-                <option value="6">DIAMOND</option>
-                <!-- 더 많은 랭크 옵션 추가 -->
-            </select>
+                    <select name="sex">
+                        <option value="all">전체 성별</option>
+                        <% filterData.sex.forEach(function(sex) { %>
+                            <option value="<%= sex.sex %>"><%= sex.sex === 'M' ? '남성' : '여성' %></option>
+                        <% }); %>
+                    </select>
 
-            <button type="submit">필터 적용</button>
-        </form>
+                    <select name="rank">
+                        <option value="all">전체 랭크</option>
+                        <% filterData.rank.forEach(function(rank) { %>
+                            <option value="<%= rank.CL_NO %>"><%= rank.CL_NAME %></option>
+                        <% }); %>
+                    </select>
 
-        <!-- 차트 영역 -->
-        <canvas id="categorySalesChart"></canvas>
+                    <button type="submit">필터 적용</button>
+                </div>
+            </form>
+       
+            <h3>카테고리별 상품 판매 순위</h3>
+            <canvas id="categorySalesChart"></canvas>
+        </div>
 
     </article>
 

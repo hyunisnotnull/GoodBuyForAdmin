@@ -1,41 +1,112 @@
 article div.article_wrap {
-    width: 1000px;
-    margin: 50px auto;
+    max-width: 400px; /* 너비 조정 */
+    margin: 50px auto; /* 중앙 정렬 */
+    padding: 20px; /* 패딩 추가 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    background: #ffffff; /* 흰색 배경 */
 }
 
 article div.title {
-    text-align: center;
+    text-align: center; /* 제목 중앙 정렬 */
+    font-size: 1.6em; /* 제목 크기 조정 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 20px; /* 제목 아래 여백 */
 }
 
 article div.content {
     margin-top: 10px;
-    text-align: center;
+    text-align: center; /* 콘텐츠 중앙 정렬 */
 }
 
-article div.content input {
-    width: 300px;
-    padding: 10px;
-    margin: 3px;
+article div.content input,
+article div.content select {
+    width: calc(100% - 20px); /* 기존 값 */
+    padding: 10px; /* 패딩 */
+    margin: 8px 0; /* 여백 */
+    border: 1px solid #ddd; /* 연한 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    font-size: 1em; /* 폰트 크기 */
+    transition: border 0.3s, box-shadow 0.3s; /* 전환 효과 */
+}
+
+article div.content input:focus,
+article div.content select:focus {
+    border-color: #6c63ff; /* 포커스 시 테두리 색상 */
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5); /* 포커스 시 그림자 효과 */
 }
 
 article div.content input[type="button"],
 article div.content input[type="reset"] {
-    width: 156px;
+    width: 35%; /* 버튼 너비 45%로 설정 */
+    background-color: #6c63ff; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 12px; /* 패딩 */
+    font-size: 0.9em; /* 글자 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 전환 효과 */
+}
+
+article div.content input[type="button"] {
+    margin-right: 10px; /* 로그인 버튼 오른쪽에 간격 추가 */
+}
+
+/* 우편번호 입력창과 찾기 버튼을 수평으로 배치 */
+.address-group {
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: space-between; /* 요소 간 간격을 자동으로 분배 */
+    gap: 10px; /* 요소 간 간격 */
+    width: 100%; /* 전체 너비 사용 */
+}
+
+/* 우편번호 입력창 스타일 */
+article div.content input#user_postcode {
+    width: calc(100% - 10px); /* 우편번호 입력창 너비 (버튼 너비 + 간격을 고려) */
+    padding: 10px;
+}
+
+/* 우편번호 찾기 버튼 스타일 */
+article div.content .address-btn {
+    width: 100px; /* 버튼 너비 고정 */
+    background-color: #4CAF50; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 12px; /* 패딩 */
+    font-size: 0.9em; /* 글자 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 전환 효과 */
+}
+
+/* 버튼 호버 효과 */
+article div.content .address-btn:hover {
+    background-color: #45a049; /* 호버 색상 */
+    transform: translateY(-2px); /* 호버 시 약간 올라오는 효과 */
+}
+
+article div.content input[type="button"]:hover,
+article div.content input[type="reset"]:hover {
+    background-color: #5a54d1; /* 호버 시 배경색 변화 */
+    transform: translateY(-2px); /* 호버 시 약간 올라오는 효과 */
 }
 
 article div.content div.profile_thum_wrap {
-    width: 200px; height: 200px;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 100px;
+    width: 200px; /* 프로필 이미지 영역 너비 */
+    height: 200px; /* 프로필 이미지 영역 높이 */
+    margin: 0 auto; /* 중앙 정렬 */
+    overflow: hidden; /* 내용 넘침 방지 */
+    border-radius: 100px; /* 원형으로 만들기 */
 }
 
 article div.content input[name="cover_profile_thum_delete"] {
-    width: 20px;
+    width: 20px; /* 체크박스 너비 */
 }
 
 article div.content input[name="profile_thum"] {
-    display: none;
+    display: none; /* 프로필 이미지 선택 입력 숨기기 */
 }
 
 /* PROFILE_MODAL_WRAP START */
@@ -48,7 +119,7 @@ article div.content input[name="profile_thum"] {
 }
 
 #profile_modal_wrap div.profile_thum_close {
-    width: 1100px;
+    width: 600px;
     margin: 50px auto 5px;
     text-align: right;
 }
@@ -60,20 +131,42 @@ article div.content input[name="profile_thum"] {
 
 #profile_modal_wrap div.profile_thum {
     display: flex;
-    width: 1100px;
+    width: 600px;
+    text-align: center;
     margin: 0 auto;
-    padding: 15px 0;
     background-color: rgba(255, 255, 255, 1);
 }
 
-#profile_modal_wrap div.profile_thum div.pre_btn,
-#profile_modal_wrap div.profile_thum div.next_btn {
-    width: 100px;
+#profile_modal_wrap div.profile_thum div.thum {
+    width: 100%; /* 전체 너비를 100%로 설정 */
+    max-width: 600px; /* 최대 너비 제한 */
+    height: 400px; /* 이미지 영역의 높이를 설정 */
     text-align: center;
 }
 
-#profile_modal_wrap div.profile_thum div.thum {
-    width: 900px;
-    text-align: center;
+#profile_modal_wrap div.profile_thum div.thum img {
+    width: 100%; /* 이미지 너비를 100%로 설정 */
+    height: 100%; /* 이미지 높이를 100%로 설정 */
+    object-fit: cover; /* 이미지의 비율을 맞추면서 잘라내기 */
+}
+
+article div.content div.profile_thum_wrap {
+    width: 200px; /* 프로필 이미지 영역 너비 */
+    height: 200px; /* 프로필 이미지 영역 높이 */
+    margin: 0 auto; /* 중앙 정렬 */
+    overflow: hidden; /* 내용 넘침 방지 */
+    border-radius: 100px; /* 원형으로 만들기 */
+}
+
+article div.content div.profile_thum_wrap img {
+    width: 100%; /* 이미지 너비를 100%로 설정 */
+    height: 100%; /* 이미지 높이를 100%로 설정 */
+    object-fit: cover; /* 비율에 맞게 이미지 크기를 조정하고 넘치는 부분은 잘라냄 */
 }
 /* PROFILE_MODAL_WRAP END */
+
+
+/* 비밀번호 찾기 */
+.hidden {
+    display: none;
+}
