@@ -1,0 +1,86 @@
+.stat_wrap {
+    max-width: 1200px; /* 넓은 폭 */
+    margin: 40px auto; /* 여백 추가 */
+    padding: 20px;
+    background: white;
+    border-radius: 8px; /* 부드러운 모서리 */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
+}
+
+/* 폼 스타일 */
+form {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;  /* 폼 안쪽 여백 줄임 */
+    margin: 20px auto;
+    width: 60%;
+    max-width: 600px;  /* 폼 너비 줄임 */
+}
+
+/* Select input 스타일 */
+select {
+    width: 23%;
+    padding: 10px 15px;  /* 선택창 패딩 줄임 */
+    margin: 8px 0;  /* 선택창 간격 줄임 */
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.9em;  /* 폰트 크기 줄임 */
+    background-color: #fafafa;
+    transition: border-color 0.3s ease;
+}
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;  /* 버튼 패딩 줄임 */
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;  /* 버튼 폰트 크기 줄임 */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 15px;
+    width: 20%;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* 차트 영역 */
+#categorySalesChart {
+    width: 80%;
+    height: 350px;  /* 차트 높이를 줄임 */
+    margin: 30px 0;  /* 차트 간격 줄임 */
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 카드 스타일 */
+.card {
+    background-color: #ffffff;   /* 배경 색상 */
+    border-radius: 8px;          /* 모서리 둥글게 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
+    padding: 20px;               /* 카드 안의 여백 */
+    margin: 20px 0;              /* 카드 간 간격 */
+    width: 100%;                 /* 카드 너비를 100%로 설정 */
+    max-width: 1000px;            /* 최대 너비 제한 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card h3 {
+    font-size: 1.25em;   /* 제목 폰트 크기 */
+    color: #2c3e50;       /* 제목 색상 */
+    margin-bottom: 15px;  /* 제목 아래 여백 */
+    text-align: center;   /* 제목 중앙 정렬 */
+}
+    

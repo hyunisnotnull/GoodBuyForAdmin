@@ -1,10 +1,17 @@
 article div.article_wrap {
-    width: 1000px;
-    margin: 50px auto;
+    max-width: 400px; /* 폼의 최대 너비 설정 */
+    margin: 50px auto; /* 중앙 정렬 */
+    padding: 20px; /* 패딩 추가 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    background: #ffffff; /* 흰색 배경 */
 }
 
 article div.title {
     text-align: center;
+    font-size: 1.6em; /* 제목 크기 조정 */
+    color: #333; /* 제목 색상 */
+    margin-bottom: 20px; /* 제목 아래 여백 */
 }
 
 article div.content {
@@ -12,13 +19,129 @@ article div.content {
     text-align: center;
 }
 
-article div.content input {
-    width: 300px;
-    padding: 10px;
-    margin: 3px;
+article div.content input,
+article div.content select {
+    width: calc(100% - 20px); /* 입력창 너비 설정 (일관된 간격을 위해 padding만큼 빼기) */
+    padding: 10px; /* 패딩 증가 */
+    margin: 8px 0; /* 여백 증가 */
+    border: 1px solid #ddd; /* 연한 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+    font-size: 1em; /* 폰트 크기 조정 */
+    transition: border 0.3s, box-shadow 0.3s; /* 전환 효과 */
+}
+
+article div.content input:focus,
+article div.content select:focus {
+    border-color: #6c63ff; /* 포커스 시 테두리 색상 */
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5); /* 포커스 시 그림자 효과 */
 }
 
 article div.content input[type="button"],
 article div.content input[type="reset"] {
-    width: 156px;
+    width: 35%; /* 버튼 너비 35%로 설정 */
+    background-color: #6c63ff; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 12px; /* 패딩 */
+    font-size: 0.9em; /* 글자 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 전환 효과 */
+}
+
+article div.content input[type="button"] {
+    margin-right: 10px; /* 로그인 버튼 오른쪽에 간격 추가 */
+}
+
+/* 로그인, 초기화 버튼에 hover 효과 */
+article div.content input[type="button"]:hover,
+article div.content input[type="reset"]:hover {
+    background-color: #5a54d1; /* 호버 시 배경색 변화 */
+    transform: translateY(-2px); /* 호버 시 약간 올라오는 효과 */
+}
+
+/* 옵션 select 박스 스타일 */
+article div.content select {
+    width: calc(100% - 20px); /* 옵션 선택 칸의 너비 조정 */
+    padding: 10px; /* 패딩 */
+    margin: 8px 0; /* 여백 */
+    border: 1px solid #ddd; /* 연한 테두리 */
+    border-radius: 5px; /* 둥근 모서리 */
+}
+
+/* 우편번호 입력창과 찾기 버튼을 수평으로 배치 */
+.address-group {
+    display: flex;
+    align-items: center; /* 세로 가운데 정렬 */
+    justify-content: space-between; /* 요소 간 간격을 자동으로 분배 */
+    gap: 10px; /* 요소 간 간격 */
+    width: 100%; /* 전체 너비 사용 */
+}
+
+/* 우편번호 입력창 스타일 */
+article div.content input#user_postcode {
+    width: calc(100% - 10px); /* 우편번호 입력창 너비 (버튼 너비 + 간격을 고려) */
+    padding: 10px;
+}
+
+/* 우편번호 찾기 버튼 스타일 */
+article div.content .address-btn {
+    width: 100px; /* 버튼 너비 고정 */
+    background-color: #4CAF50; /* 버튼 배경색 */
+    color: #ffffff; /* 버튼 글자색 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 모서리 */
+    padding: 12px; /* 패딩 */
+    font-size: 0.9em; /* 글자 크기 */
+    cursor: pointer; /* 포인터 커서 */
+    transition: background-color 0.3s, transform 0.2s; /* 전환 효과 */
+}
+
+/* 버튼 호버 효과 */
+article div.content .address-btn:hover {
+    background-color: #45a049; /* 호버 색상 */
+    transform: translateY(-2px); /* 호버 시 약간 올라오는 효과 */
+}
+
+
+/* '프로필 이미지 (선택)' 텍스트 스타일 */
+.profile-image-label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px; /* 텍스트와 입력 필드 사이에 여백 추가 */
+}
+
+/* 파일 입력 버튼 스타일 */
+article div.content input[type="file"] {
+    width: 80%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* 파일 입력 버튼 hover 효과 */
+article div.content input[type="file"]:hover {
+    border-color: #6c63ff;
+    background-color: #eaeaea;
+}
+
+/* 파일 입력 버튼 텍스트 숨기기 (사용자에게 깔끔한 UI 제공) */
+article div.content input[type="file"]::-webkit-file-upload-button {
+    background-color: #6c63ff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/* 파일 선택 시 hover 효과 */
+article div.content input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #5a54d1;
 }
