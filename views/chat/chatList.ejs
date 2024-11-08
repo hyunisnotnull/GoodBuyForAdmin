@@ -24,16 +24,16 @@
                         <% chattingRooms.forEach(function(room) { %>
                             <li>
                                 <a href="/chat/chat/<%= room.AC_NO %>">
-                                    <img src="\<%= room.otherId %>\<%= room.otherthum %>" alt="프로필" class="profile-image">
+                                    <img src="\<%= room.AC_USER_ID %>\<%= room.AC_USER_NICK %>" alt="프로필" class="profile-image">
                                     <div class="chat-info">
-                                        <div class="chat-name"><%= room.otherNick %></div>
+                                        <div class="chat-name"><%= room.AC_USER_NICK %></div>
                                     </div>
                                     <div class="chat-info">
-                                        <div class="chat-last-message"><%= room.CH_TITLE %></div>
+                                        <div class="chat-last-message"><%= room.AC_TITLE %></div>
                                     </div>
-                                    <div class="chat-time"><%= room.lastMessageTime %></div>
-                                    <% if (room.CH_UNREAD_COUNT > 0) { %>
-                                        <span class="unread-badge"><%= room.CH_UNREAD_COUNT %></span>
+                                    <div class="chat-time"><%= room.AC_TIME %></div>
+                                    <% if (room.AC_UNREAD_COUNT > 0) { %>
+                                        <span class="unread-badge"><%= room.AC_UNREAD_COUNT %></span>
                                     <% } %>
                                 </a>
                             </li>

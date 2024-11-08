@@ -13,6 +13,7 @@ function joinRoom(isAdminChat, roomId, senderId, senderNick, otherId, otherNick,
     
     const port = isAdminChat ? 3002 : 3001; // 관리자와의 대화이면 3002 포트, 그렇지 않으면 3001 포트 사용
     console.log("joinRoom 함수 호출됨 - isAdminChat 값:", isAdminChat);
+    console.log("roomId:", roomId, "senderId:", senderId, "otherId:", otherId);
 
     // 기존 연결이 있다면 종료
     if (socket) {
