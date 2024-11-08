@@ -16,24 +16,20 @@
     <article>
         <div class="article_wrap">
             <div class="title">
-                <h4>MODIFY FORM</h4>
+                <h4>관리자 계정 수정</h4>
             </div>
             <div class="content">
                 <form action="/admin/modify_confirm" name="modify_form" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="a_no" value="<%= admin.A_NO %>">
                     <input type="hidden" name="a_id" value="<%= admin.A_ID %>">
 
-                    <input type="text" value="<%= admin.A_ID %>" readonly disabled><br>
-                    <input type="password" name="a_pw" placeholder="INPUT admin PW"><br>
-                    <input type="text" name="a_mail" value="<%= admin.A_MAIL %>"><br>
-                    <input type="text" name="a_phone" value="<%= admin.A_PHONE %>"><br>
                     <input type="file" name="profile_thum" placeholder="SELECT PROFILE IMAGE"><br>
                     <div class="profile_thum_wrap">
                         <a href="#none">
                             <%
                                 if (admin.A_PROFILE_THUM && admin.A_PROFILE_THUM !== '') {
                             %>
-                                    <img src="/<%=admin.A_ID%>/<%=admin.A_PROFILE_THUM%>">
+                                <img src="/<%=admin.A_ID%>/<%=admin.A_PROFILE_THUM%>">
                             <%
                                 } else {
                             %>
@@ -44,11 +40,40 @@
                         </a>
                     </div>
                     <br>
-                    CHANGE OR DELETE COVER PROFILE <input type="checkbox" name="cover_profile_thum_delete">
+                    프로필 사진 변경 및 삭제 <input type="checkbox" name="cover_profile_thum_delete">
                     <br><br>
-                    <input type="button" value="MODIFY" onclick="modifyForm();">
-                    <input type="button" value="RESET" onclick="resetForm();">
+
+                    <input type="text" value="<%= admin.A_ID %>" readonly disabled><br>
+                    <input type="password" value="******" readonly disabled><br>
+                    <input type="text" name="a_mail" value="<%= admin.A_MAIL %>"><br>
+                    <input type="text" name="a_phone" value="<%= admin.A_PHONE %>"><br>
+                    
+                    <input type="button" value="계정 수정" onclick="modifyForm();">
+                    <input type="button" value="초기화" onclick="resetForm();">
                 </form>
+            </div>
+
+            <div id="profile_modal_wrap">
+                <div class="profile_thum_close">
+                    <a href="#none">CLOSE</a>
+                </div>
+                <div class="profile_thum">
+                    <div class="thum">
+
+                        <%
+                            if (admin.A_PROFILE_THUM && admin.A_PROFILE_THUM !== '') {
+                        %>
+                                <img src="/<%=admin.A_ID%>/<%=admin.A_PROFILE_THUM%>">
+                        <%
+                            } else {
+                        %>
+                                <img src="/img/default_profile_thum.png">
+                        <%    
+                            }
+                        %>
+                        
+                    </div>
+                </div>
             </div>
 
         </div>
