@@ -18,6 +18,8 @@ router.get('/chatList', (req, res) => {
 
 // 목록에서 관리자 채팅방 입장
 router.get('/chat/:roomId', (req, res) => {
+    const { roomId } = req.params;
+    console.log(`/admin/chat/:roomId/ - 요청된 roomId: ${roomId}`);
     console.log('/admin/chat/:roomId/');
     chatService.enterAdminChatRoom(req, res);
 });
