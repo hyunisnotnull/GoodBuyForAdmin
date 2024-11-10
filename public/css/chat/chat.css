@@ -83,16 +83,15 @@ article {
 }
 
 
-
 /* 상대방 메시지 그룹: 왼쪽 정렬 */
 .other-message-group {
-    align-items: flex-start;
+    text-align: start;
     margin-right: auto; /* 왼쪽 정렬 */
 }
 
 /* 내 메시지 그룹: 오른쪽 정렬 */
 .my-message-group {
-    align-items: flex-end;
+    text-align: end;
     margin-left: auto; /* 오른쪽 정렬 */
 }
 
@@ -123,14 +122,7 @@ article {
 .my-message {
     display: inline-block;
     max-width: 100%;
-}
-
-.my-message{
-    text-align: right;
-}
-
-.other-message{
-    text-align: left;
+    padding: 3px;
 }
 
 .message-text {
@@ -138,6 +130,7 @@ article {
     font-size: 14px;
     word-wrap: break-word;
     display: inline-block;
+    max-width: 70%;
 }
 
 .chat-image {
@@ -226,4 +219,40 @@ article {
 
 .chat-window::-webkit-scrollbar-track {
     background: transparent;
+}
+
+
+/* 모달 기본 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* 모달 안의 이미지 스타일 */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 8px;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
 }

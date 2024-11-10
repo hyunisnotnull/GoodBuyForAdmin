@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../include/title.ejs') %>
+    
+    <link href="/css/chat/chat.css" rel="stylesheet" type="text/css">
+    <script src="/socket.io/socket.io.js"></script>
+
+</head>
+<body>
+
+    <%- include('../include/header.ejs') %>
+    <%- include('../include/nav.ejs') %>
+
+    <article>
+        <div class="article_wrap">
+            <div class="title">
+                <button onclick="goBack();" class="back-button">&larr;</button>&nbsp;&nbsp;
+            </div>
+            <div class="content">
+                <div class="chat-header">
+                    <img src="http://localhost:3001/<%= room.AC_USER_ID %>/<%= room.U_PROFILE_THUM %>" class="profile-image" alt="프로필">
+                    <div class="user-info">
+                        <h3 class="username"><%= room.AC_USER_NICK %></h3>
+                    </div>
+                </div>
+
+                <div id="chatWindow" class="chat-window"></div>
+
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="메시지를 입력하세요..." class="message-input">
+                    <input type="file" id="imageInput" style="display: none;" accept="image/*">
+                    <button onclick="document.getElementById('imageInput').click();" class="send-button">사진 업로드</button>
+                    <button onclick="sendMessage()" class="send-button">전송</button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- 모달 구조 -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        const roomId = '<%= roomId %>';
+        const senderId = '<%= loginedAdmin.A_ID %>';
+        const senderNick = '<%= loginedAdmin.A_NICK %>';
+        const otherId = '<%= room.AC_USER_ID %>';
+        const otherNick = '<%= room.AC_USER_NICK %>';
+        const otherthum = '<%= room.U_PROFILE_THUM %>';
+        const lastExitTime = null;
+        const isAdminChat = '<%= room.ISADMINCHAT %>';
+    </script>
+
+    <script src="/js/chat/chatClient.js"></script>
+    <script src="/js/chat/chatFunctions.js"></script>
+
+    <%- include('../include/footer.ejs') %>
+
+</body>
+</html>
