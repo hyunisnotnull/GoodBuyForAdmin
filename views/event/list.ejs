@@ -44,13 +44,42 @@
                             <td>
                                 <% const endDate = new Date(event.originalEndDate); %>
                                 <% const isExpired = endDate < new Date(); %>
-                                <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;"
-                                        onsubmit="return confirmStatusChange(event, `<%= event.E_ACTIVE === 1 ? '비활성화' : '활성화' %>`, `<%= isExpired ? 'true' : 'false' %>`);">
-                                    <button type="submit">
-                                        <%= event.E_ACTIVE === 1 ? '활성화' : '비활성화' %>
-                                    </button>
-                              </form>
-                            </td>
+                            
+                                <!-- 광고 상태에 따른 구분 -->
+                                <% if (event.E_ACTIVE === 3) { %>
+                                    <!-- 자체광고 활성화 상태 (자체광고 비활성화로 변경) -->
+                                    <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;" 
+                                        onsubmit="return confirmStatusChange(event, '자체광고를 비활성화', `<%= isExpired ? 'true' : 'false' %>`);">
+                                        <button type="submit">
+                                            자체광고 비활성화
+                                        </button>
+                                    </form>
+                                <% } else if (event.E_ACTIVE === 1) { %>
+                                    <!-- 홈광고 활성화 상태 (홈광고 비활성화로 변경) -->
+                                    <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;" 
+                                        onsubmit="return confirmStatusChange(event, '홈광고를 비활성화', `<%= isExpired ? 'true' : 'false' %>`);">
+                                        <button type="submit">
+                                            홈광고 비활성화
+                                        </button>
+                                    </form>
+                                <% } else if (event.E_ACTIVE === 2) { %>
+                                    <!-- 홈광고 비활성화 상태 (홈광고 활성화로 변경) -->
+                                    <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;" 
+                                        onsubmit="return confirmStatusChange(event, '홈광고를 활성화', `<%= isExpired ? 'true' : 'false' %>`);">
+                                        <button type="submit">
+                                            홈광고 활성화
+                                        </button>
+                                    </form>
+                                <% } else if (event.E_ACTIVE === 4) { %>
+                                    <!-- 자체광고 비활성화 상태 (자체광고 활성화로 변경) -->
+                                    <form action="/event/event_status/<%= event.E_NO %>" method="POST" style="display:inline;" 
+                                        onsubmit="return confirmStatusChange(event, '자체광고를 활성화', `<%= isExpired ? 'true' : 'false' %>`);">
+                                        <button type="submit">
+                                            자체광고 활성화
+                                        </button>
+                                    </form>
+                                <% } %>
+                            </td>                            
                             <td>
                                 <a class="edit-link" href="/event/modify_event_form/<%= event.E_NO %>">수정</a>
                                 <form action="/event/delete_event_confirm" name="delete_event_confirm" method="POST" style="display:inline;">
