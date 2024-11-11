@@ -1,12 +1,45 @@
+/* 기본적으로 body와 html 태그의 여백을 제거하고 전체 중앙 정렬 */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+
+/* article_wrap: 중앙 정렬을 위한 스타일 */
 article div.article_wrap {
-    width: 1000px;
-    margin: 50px auto;
+    width: 1000px;          /* 고정 너비 */
+    margin: 50px auto;      /* 위 아래 50px 간격, 좌우 자동 마진 (중앙 정렬) */
+    text-align: center;     /* 자식 요소들이 중앙 정렬되도록 */
 }
 
+/* 제목 스타일 */
 article div.article_wrap div.title {
-    text-align: center;
+    margin-bottom: 20px;     /* 제목과 이미지 사이에 여백 추가 */
 }
 
-article div.article_wrap div.content {
-    text-align: center;
+article div.article_wrap div.title h3 {
+    font-size: 24px;         /* 제목 크기 설정 */
+    color: #333;             /* 제목 색상 */
+    font-weight: bold;       /* 제목 두께 */
+    margin: 0;
+}
+
+/* 이미지 스타일 */
+article div.article_wrap div.img {
+    display: flex;           /* flexbox를 사용하여 이미지 중앙 정렬 */
+    justify-content: center; /* 이미지 수평 중앙 정렬 */
+    margin-top: 20px;        /* 제목과 이미지 사이의 간격 */
+}
+
+article div.article_wrap div.img img.home {
+    max-width: 100%;         /* 이미지의 최대 너비를 부모 요소에 맞춤 */
+    height: auto;            /* 이미지 비율을 유지하면서 높이를 자동으로 조정 */
+    border-radius: 8px;      /* 이미지 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 추가 */
+    transition: transform 0.3s ease; /* 이미지에 마우스 호버시 변환 효과 */
+}
+
+article div.article_wrap div.img img.home:hover {
+    transform: scale(1.05);  /* 마우스 호버시 이미지 확대 효과 */
 }
