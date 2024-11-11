@@ -11,9 +11,10 @@ function confirmStatusChange(event, action, isExpired) {
     const confirmation = confirm(`${action} 하시겠습니까?`);
     if (!confirmation) {
         event.preventDefault();
+        return false;
     }
     
-    return confirmation; 
+    return true;
 }
 
 function deleteConfirm() {
