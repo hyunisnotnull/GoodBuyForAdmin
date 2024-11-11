@@ -78,7 +78,7 @@ router.post('/disapprove_admin', roleCheck('SUPER_ADMIN'), (req, res) => {
 });
 
 // 특정 관리자 정보
-router.get('/get_admin/:id', (req, res) => {
+router.get('/get_admin/:id', roleCheck('ADMIN', 'SUPER_ADMIN'), (req, res) => {
     console.log('/admin/get_admin');
     adminService.getAdminById(req, res);
 });

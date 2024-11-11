@@ -30,6 +30,14 @@
             <small>이벤트 이동 URL을 수정하세요.</small>
         </div>
         <div>
+            <select name="e_active" required>
+                <option value="">이벤트 사용처</option>
+                <option value="1" <%= event.E_ACTIVE === 1 || event.E_ACTIVE === 2 ? 'selected' : '' %>>배너광고(홈)</option>
+                <option value="3" <%= event.E_ACTIVE === 3 || event.E_ACTIVE === 4 ? 'selected' : '' %>>자체광고(로그인/회원가입)</option>
+            </select>
+            <small>이벤트 사용처를 선택하세요.</small>
+        </div>
+        <div>
             <textarea name="description" placeholder="이벤트 설명" required><%= event.E_DESC %></textarea>
             <small>이벤트에 대한 설명을 수정하세요.</small>
         </div>
