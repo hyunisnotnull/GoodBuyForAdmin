@@ -8,4 +8,14 @@ router.get('/', (req, res) => {
 
 });
 
+router.get('/monthly', (req, res) => {
+    console.log('/stat/monthly');
+    statService.monthly(req, res);
+});
+
+router.get('/region', (req, res) => {
+    console.log('/stat/region');
+    statService.region(req, res);
+});
+
 module.exports = router;

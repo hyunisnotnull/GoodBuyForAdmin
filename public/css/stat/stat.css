@@ -1,5 +1,5 @@
-.stat_wrap {
-    max-width: 1200px; /* 넓은 폭 */
+.article {
+    max-width: 1000px; /* 넓은 폭 */
     margin: 40px auto; /* 여백 추가 */
     padding: 20px;
     background: white;
@@ -55,9 +55,9 @@ button:hover {
 }
 
 /* 차트 영역 */
-#categorySalesChart {
+#categorySalesChart1, #categorySalesChart2 ,#categorySalesChart3 {
     width: 80%;
-    height: 350px;  /* 차트 높이를 줄임 */
+    height: 500px;  /* 차트 높이를 줄임 */
     margin: 30px 0;  /* 차트 간격 줄임 */
     border-radius: 8px;
     background-color: white;
@@ -84,3 +84,34 @@ button:hover {
     text-align: center;   /* 제목 중앙 정렬 */
 }
     
+.main-tab-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.main-tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
+.main-tab-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.main-tab-content {
+    display: none;
+}
+
+.main-tab-content.active {
+    display: block;
+}
+
+.pie-chart {
+    min-width: 300px;
+    max-height: 500px;
+}

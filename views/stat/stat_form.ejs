@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include('../include/title.ejs') %>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
     <script>
         const salesData = JSON.parse('<%- JSON.stringify(salesData) %>');
+        const monthlyData = JSON.parse('<%- JSON.stringify(monthlyData) %>');
+        const regionData = JSON.parse('<%- JSON.stringify(regionData) %>');
     </script>
     <script src="/js/stat/stat.js"></script>
     <link href="/css/stat/stat.css" rel="stylesheet" type="text/css">
@@ -15,10 +20,15 @@
     <%- include('../include/header.ejs') %>
     <%- include('../include/nav.ejs') %>
 
-    <article>
-
+    <!-- Tab 1 Content -->
+    <article id="tab1" class="main-tab-content">
         <div class="card">
-            <form action="/stat" method="get">
+            <div class="main-tab-buttons">
+                <button class="main-tab-btn active" onclick="showMainTab('tab1')">카테고리</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab2')">월별</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab3')">지역별</button>
+            </div>
+            <form action="/stat" method="get" data-chart-id="categorySalesChart1">
                 <h3>옵션</h3>
                 <div class="filter-group">
                     <select name="age">
@@ -27,29 +37,119 @@
                             <option value="<%= age.age %>"><%= age.age %>대</option>
                         <% }); %>
                     </select>
-
                     <select name="sex">
                         <option value="all">전체 성별</option>
                         <% filterData.sex.forEach(function(sex) { %>
                             <option value="<%= sex.sex %>"><%= sex.sex === 'M' ? '남성' : '여성' %></option>
                         <% }); %>
                     </select>
-
                     <select name="rank">
                         <option value="all">전체 랭크</option>
                         <% filterData.rank.forEach(function(rank) { %>
                             <option value="<%= rank.CL_NO %>"><%= rank.CL_NAME %></option>
                         <% }); %>
                     </select>
-
                     <button type="submit">필터 적용</button>
                 </div>
             </form>
-       
             <h3>카테고리별 상품 판매 순위</h3>
-            <canvas id="categorySalesChart"></canvas>
+            <select name="chartType" onchange="updateChartType('categorySalesChart1', this.value)">
+                <option value="bar">막대 그래프</option>
+                <option value="line">선 그래프</option>
+                <option value="pie">원형 그래프</option>
+            </select>
+            <button onclick="downloadChartData('categorySalesChart1')">엑셀로 다운로드</button>
+            <button onclick="downloadChartAsPDF('categorySalesChart1')">PDF로 이미지 다운로드</button>
+            <canvas id="categorySalesChart1"></canvas>
         </div>
-
+    </article>
+    
+    <!-- Tab 2 Content -->
+    <article id="tab2" class="main-tab-content">
+        <div class="card">
+            <div class="main-tab-buttons">
+                <button class="main-tab-btn active" onclick="showMainTab('tab1')">카테고리</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab2')">월별</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab3')">지역별</button>
+            </div>
+            <form action="/stat" method="get" data-chart-id="categorySalesChart2">
+                <h3>옵션</h3>
+                <div class="filter-group">
+                    <select name="age">
+                        <option value="all">전체 연령대</option>
+                        <% filterData.age.forEach(function(age) { %>
+                            <option value="<%= age.age %>"><%= age.age %>대</option>
+                        <% }); %>
+                    </select>
+                    <select name="sex">
+                        <option value="all">전체 성별</option>
+                        <% filterData.sex.forEach(function(sex) { %>
+                            <option value="<%= sex.sex %>"><%= sex.sex === 'M' ? '남성' : '여성' %></option>
+                        <% }); %>
+                    </select>
+                    <select name="rank">
+                        <option value="all">전체 랭크</option>
+                        <% filterData.rank.forEach(function(rank) { %>
+                            <option value="<%= rank.CL_NO %>"><%= rank.CL_NAME %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit">필터 적용</button>
+                </div>
+            </form>
+            <h3>월별 거래량 순위</h3>
+            <select name="chartType" onchange="updateChartType('categorySalesChart2', this.value)">
+                <option value="bar">막대 그래프</option>
+                <option value="line">선 그래프</option>
+                <option value="pie">원형 그래프</option>
+            </select>
+            <button onclick="downloadChartData('categorySalesChart2')">엑셀로 다운로드</button>
+            <button onclick="downloadChartAsPDF('categorySalesChart2')">PDF로 이미지 다운로드</button>
+            <canvas id="categorySalesChart2"></canvas>
+        </div>
+    </article>
+    
+    <!-- Tab 3 Content -->
+    <article id="tab3" class="main-tab-content">
+        <div class="card">
+            <div class="main-tab-buttons">
+                <button class="main-tab-btn active" onclick="showMainTab('tab1')">카테고리</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab2')">월별</button>
+                <button class="main-tab-btn" onclick="showMainTab('tab3')">지역별</button>
+            </div>
+            <form action="/stat" method="get" data-chart-id="categorySalesChart3">
+                <h3>옵션</h3>
+                <div class="filter-group">
+                    <select name="age">
+                        <option value="all">전체 연령대</option>
+                        <% filterData.age.forEach(function(age) { %>
+                            <option value="<%= age.age %>"><%= age.age %>대</option>
+                        <% }); %>
+                    </select>
+                    <select name="sex">
+                        <option value="all">전체 성별</option>
+                        <% filterData.sex.forEach(function(sex) { %>
+                            <option value="<%= sex.sex %>"><%= sex.sex === 'M' ? '남성' : '여성' %></option>
+                        <% }); %>
+                    </select>
+                    <select name="rank">
+                        <option value="all">전체 랭크</option>
+                        <% filterData.rank.forEach(function(rank) { %>
+                            <option value="<%= rank.CL_NO %>"><%= rank.CL_NAME %></option>
+                        <% }); %>
+                    </select>
+                    <button type="submit">필터 적용</button>
+                </div>
+            </form>
+            <h3>지역별 거래량 순위</h3>
+            <select name="chartType" onchange="updateChartType('categorySalesChart3', this.value)">
+                <option value="bar">막대 그래프</option>
+                <option value="line">선 그래프</option>
+                <option value="pie">원형 그래프</option>
+            </select>
+            <button onclick="downloadChartData('categorySalesChart3')">엑셀로 다운로드</button>
+            <button onclick="downloadChartAsPDF('categorySalesChart3')">PDF로 이미지 다운로드</button>
+            <canvas id="categorySalesChart3"></canvas>
+        </div>
     </article>
 
     <%- include('../include/footer.ejs') %>
