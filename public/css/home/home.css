@@ -168,8 +168,3 @@ button.prev:hover, button.next:hover {
     background-color: rgba(0, 0, 0, 0.5);  /* 배경색을 반투명 검정으로 설정 */
     color: white;  /* 글자 색상 유지 */
 }
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f5f7fa;
-}
