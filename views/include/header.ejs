@@ -7,16 +7,16 @@
         </a>
         
         <div class="menu">
-            <a href="/">HOME</a>|
+            <a href="/">HOME</a> | &nbsp;
             <%
                 if(loginedAdmin === undefined) {
             %>
-                    <a href="/admin/sign_up_form">회원가입</a>|
+                    <a href="/admin/sign_up_form">회원가입</a> | &nbsp;
                     <a href="/admin/sign_in_form">로그인</a>
             <%
                 } else {
             %>
-                    <a href="/admin/modify_form">계정수정</a>|
+                    <a href="/admin/modify_form">계정수정</a> | &nbsp;
                     <a href="/admin/sign_out_confirm">로그아웃</a>
             <%
                 }
