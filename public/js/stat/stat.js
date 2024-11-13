@@ -6,11 +6,19 @@ window.onload = function() {
     };
 
     const colorPalette = [
-        '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FF9633', '#FFC733', '#33FFDC', '#8D33FF', '#3380FF', '#FF3380',
-        '#33FF96', '#FF5733', '#33FF57', '#5733FF', '#FFD633', '#C733FF', '#FF33A1', '#FF9633', '#FFC733', '#33FFDC',
-        '#FF5733', '#57FF33', '#33A1FF', '#FF8C33', '#33FFC7', '#C7FF33', '#FF33F6', '#FF3357', '#33FF8C', '#FF5733',
-        '#C733FF', '#FF9633', '#FFC733', '#3380FF', '#FF3380', '#33FF96', '#3357FF', '#FF5733', '#57FF33', '#33A1FF',
-        '#FF33C7', '#8CFF33', '#C733FF', '#FF8C33', '#33FFC7', '#FF33A1', '#FF9633', '#FF3357', '#3380FF', '#33FF8C'
+        'rgba(255, 99, 132, 0.5)', 
+        'rgba(54, 162, 235, 0.5)', 
+        'rgba(255, 206, 86, 0.5)', 
+        'rgba(75, 192, 192, 0.5)', 
+        'rgba(153, 102, 255, 0.5)', 
+        'rgba(255, 159, 64, 0.5)', 
+        'rgba(255, 20, 147, 0.5)', 
+        'rgba(0, 255, 0, 0.5)', 
+        'rgba(0, 0, 255, 0.5)', 
+        'rgba(128, 0, 128, 0.5)', 
+        'rgba(255, 215, 0, 0.5)', 
+        'rgba(210, 105, 30, 0.5)', 
+        'rgba(0, 128, 128, 0.5)'
     ];
 
     // 차트 데이터를 가져와서 렌더링하는 함수
@@ -54,7 +62,7 @@ window.onload = function() {
                     datasets: [{
                         label: label,
                         data: chartData,
-                        backgroundColor: chartType === 'pie' ? colorPalette : '#FF5733',
+                        backgroundColor: chartType === 'pie' ? colorPalette : 'rgba(255, 99, 132, 0.5)',
                     }]
                 },
                 options: {
@@ -103,7 +111,7 @@ window.onload = function() {
                     datasets: [{
                         label: label,
                         data: data,
-                        backgroundColor: chartType === 'pie' ? colorPalette : '#FF5733',
+                        backgroundColor: chartType === 'pie' ? colorPalette : 'rgba(255, 99, 132, 0.5)',
                     }]
                 },
                 options: {

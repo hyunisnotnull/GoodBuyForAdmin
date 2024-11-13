@@ -2,21 +2,22 @@
 
 <nav>
     <div class="nav_wrap">
-        
-        <a href="/chat/chatList">문의</a> &nbsp;
-        <a href="/event/list">배너관리</a> &nbsp;
-        <a href="/stat">통계</a> &nbsp;
+        <div class="left-menu"></div>
+        <div class="right-menu">
+            <a href="/chat/chatList">문의</a> &nbsp;
+            <a href="/event/list">배너관리</a> &nbsp;
+            <a href="/stat">통계</a> &nbsp;
 
-        <%
-            if (loginedAdmin && loginedAdmin.A_ROLE === 'SUPER_ADMIN') {
-        %>
-            <a href="/admin/adminlist">관리자 리스트</a> &nbsp;
-        <%
-            }
-        %>
+            <%
+                if (loginedAdmin && loginedAdmin.A_ROLE === 'SUPER_ADMIN') {
+            %>
+                <a href="/admin/adminlist">관리자 리스트</a> &nbsp;
+            <%
+                }
+            %>
 
-        <a href="/admin/userlist">유저 리스트</a> &nbsp;
-        <a href="/report/list">게시물 리스트</a> &nbsp;
-
+            <a href="/admin/userlist">유저 리스트</a> &nbsp;
+            <a href="/report/list">게시물 리스트</a> &nbsp;
+        </div>
     </div>
 </nav>
