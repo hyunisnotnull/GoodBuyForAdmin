@@ -24,7 +24,7 @@
                         <% chattingRooms.forEach(function(room) { %>
                             <li data-room-id="<%= room.ISADMINCHAT ? room.AC_NO : room.CH_NO %>">
                                 <a href="/chat/chatA/<%= room.AC_NO %>">
-                                    <img src="http://localhost:3001/<%= room.AC_USER_ID %>/<%= room.U_PROFILE_THUM %>" alt="프로필" class="profile-image">
+                                    <img src="http://14.42.124.92:3001/<%= room.AC_USER_ID %>/<%= room.U_PROFILE_THUM %>" alt="프로필" class="profile-image">
                                     <div class="chat-info">
                                         <div class="chat-name"><%= room.AC_USER_NICK %></div>
                                     </div>
