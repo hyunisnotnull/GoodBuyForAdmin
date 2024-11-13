@@ -22,8 +22,8 @@ function joinRoom(isAdminChat, roomId, senderId, senderNick, otherId, otherNick,
     }
 
     // 새로운 포트로 소켓 연결 초기화
-    socket = io(`http://localhost:${port}`);
-    console.log(`소켓 연결 시도: http://localhost:${port}`);
+    socket = io(`http://14.42.124.92:${port}`);
+    console.log(`소켓 연결 시도: http://14.42.124.92:${port}`);
 
     // 연결 성공 확인 로그
     socket.on('connect', () => {
@@ -134,7 +134,7 @@ function displayMessage(data) {
             const profileImage = document.createElement('img');
             profileImage.classList.add('chat-profile-image');
             profileImage.src = otherthum !== '' 
-                ? `http://localhost:3001/${otherId}/${otherthum}` 
+                ? `http://14.42.124.92:3001/${otherId}/${otherthum}` 
                 : '/img/default_profile_thum.png';
 
             const nickname = document.createElement('span');

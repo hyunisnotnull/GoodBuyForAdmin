@@ -8,7 +8,7 @@ function goBack() {
 function deleteChat() {
     if (confirm("채팅방을 삭제하시겠습니까?")) {
         const port = isAdminChat ? 3002 : 3001;
-        const deleteUrl = `http://localhost:${port}${isAdminChat ? '/chat/chatA/delete' : '/chat/delete'}/${roomId}`;
+        const deleteUrl = `http://14.42.124.92:${port}${isAdminChat ? '/chat/chatA/delete' : '/chat/delete'}/${roomId}`;
         
         fetch(deleteUrl, {
             method: 'DELETE',
