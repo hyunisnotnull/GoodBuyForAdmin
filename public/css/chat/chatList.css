@@ -2,7 +2,7 @@
 .article_wrap {
     width: 100%;
     max-width: 500px;
-    height: 79vh; 
+    height: 78vh; 
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,6 +21,8 @@
 
 .article_wrap .content {
     padding: 0;
+    overflow-y: auto;
+    max-height: 70vh
 }
 
 .article_wrap ul {
