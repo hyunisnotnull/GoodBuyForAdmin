@@ -1,5 +1,5 @@
 .article {
-    max-width: 1000px; /* 넓은 폭 */
+    max-width: 1200px; /* 넓은 폭 */
     margin: 40px auto; /* 여백 추가 */
     padding: 20px;
     background: white;
@@ -7,13 +7,44 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
 }
 
+.main-tab-buttons {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.main-tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+}
+
+.main-tab-btn.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold
+}
+
+.main-tab-content {
+    display: none;
+}
+
+.main-tab-content.active {
+    display: block;
+}
+
+.pie-chart {
+    min-width: 300px;
+    max-height: 500px;
+}
+
 /* 폼 스타일 */
 form {
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;  /* 폼 안쪽 여백 줄임 */
-    margin: 20px auto;
+    margin: 1px auto;
     width: 60%;
     max-width: 600px;  /* 폼 너비 줄임 */
 }
@@ -57,7 +88,7 @@ button:hover {
 /* 차트 영역 */
 #categorySalesChart1, #categorySalesChart2 ,#categorySalesChart3 {
     width: 80%;
-    height: 500px;  /* 차트 높이를 줄임 */
+    max-height: 500px;  /* 차트 높이를 줄임 */
     margin: 30px 0;  /* 차트 간격 줄임 */
     border-radius: 8px;
     background-color: white;
@@ -66,52 +97,24 @@ button:hover {
 
 /* 카드 스타일 */
 .card {
-    background-color: #ffffff;   /* 배경 색상 */
-    border-radius: 8px;          /* 모서리 둥글게 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* 그림자 효과 */
-    padding: 20px;               /* 카드 안의 여백 */
-    margin: 20px 0;              /* 카드 간 간격 */
-    width: 100%;                 /* 카드 너비를 100%로 설정 */
-    max-width: 1000px;            /* 최대 너비 제한 */
+    background-color: #ffffff;  
+    border-radius: 8px;          
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 20px;               
+    margin: 20px 0;              
+    width: 100%;                 
+    max-width: 1200px;           
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    position: relative;
+    top: -10px;
 }
 
 .card h3 {
-    font-size: 1.25em;   /* 제목 폰트 크기 */
-    color: #2c3e50;       /* 제목 색상 */
-    margin-bottom: 15px;  /* 제목 아래 여백 */
-    text-align: center;   /* 제목 중앙 정렬 */
+    font-size: 1.25em;   
+    color: #2c3e50;     
+    margin-bottom: 15px; 
+    text-align: center;  
 }
     
-.main-tab-buttons {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.main-tab-btn {
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #ddd;
-    border: none;
-    border-radius: 5px;
-}
-
-.main-tab-btn.active {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.main-tab-content {
-    display: none;
-}
-
-.main-tab-content.active {
-    display: block;
-}
-
-.pie-chart {
-    min-width: 300px;
-    max-height: 500px;
-}
