@@ -12,6 +12,7 @@ body {
     max-width: 1200px; /* 넓은 폭 */
     margin: 40px auto; /* 여백 추가 */
     padding: 20px;
+    height: 500px;
     background: white;
     border-radius: 8px; /* 부드러운 모서리 */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */

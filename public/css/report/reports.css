@@ -11,6 +11,7 @@ body {
 .reports_wrap {
     max-width: 1200px; /* 넓은 폭 */
     margin: 40px auto; /* 여백 추가 */
+    height: 500px;
     padding: 20px;
     background: white;
     border-radius: 8px; /* 부드러운 모서리 */

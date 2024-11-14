@@ -42,7 +42,9 @@
                         <select name="sex">
                             <option value="all">전체 성별</option>
                             <% filterData.sex.forEach(function(sex) { %>
-                                <option value="<%= sex.sex %>"><%= sex.sex === 'M' ? '남성' : '여성' %></option>
+                                <option value="<%= sex.sex %>">
+                                    <%= sex.sex === 'M' ? '남성' : '여성' %>
+                                </option>
                             <% }); %>
                         </select>
                         <select name="rank">
