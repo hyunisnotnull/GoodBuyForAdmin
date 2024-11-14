@@ -41,7 +41,7 @@
                     <% reports.forEach(report => { %>
                         <tr>
                             <td><%= report.R_NO %></td>
-                            <td><a href="http://localhost:3001/product/detail_product_form?p_no=<%= report.P_NO %>"><%= report.P_NAME %></a></td>
+                            <td><a href="http://14.42.124.92:3001/product/detail_product_form?p_no=<%= report.P_NO %>"><%= report.P_NAME %></a></td>
                             <td><%= report.U_NICK %></td>
                             <td><%= report.ST_NAME %></td>
                             <td><%= report.R_REG_DATE %></td>
@@ -62,6 +62,7 @@
                     <% }) %>
                 </tbody>
             </table>
+            <br>
             <%- include('../include/pagination.ejs', {
                 currentPage: pagination.currentPage,
                 totalPages: pagination.totalPages,

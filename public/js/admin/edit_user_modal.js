@@ -66,12 +66,12 @@ function updateTable(userId, userPoint, userPenalty, newGrade) {
 
             const gradeCell = row.querySelector('td:nth-child(7)');
             switch (newGrade) {
-                case 7: gradeCell.textContent = 'DIAMOND'; break;
-                case 6: gradeCell.textContent = 'PLATINUM'; break;
-                case 5: gradeCell.textContent = 'GOLD'; break;
-                case 4: gradeCell.textContent = 'SILVER'; break;
-                case 3: gradeCell.textContent = 'BRONZE'; break;
-                case 2: gradeCell.textContent = 'IRON'; break;
+                case 6: gradeCell.textContent = 'DIAMOND'; break;
+                case 5: gradeCell.textContent = 'PLATINUM'; break;
+                case 4: gradeCell.textContent = 'GOLD'; break;
+                case 3: gradeCell.textContent = 'SILVER'; break;
+                case 2: gradeCell.textContent = 'BRONZE'; break;
+                case 1: gradeCell.textContent = 'IRON'; break;
                 default: gradeCell.textContent = 'UNRANK';
             }
 
