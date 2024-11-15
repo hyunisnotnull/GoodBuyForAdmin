@@ -32,7 +32,7 @@ const maxAge = 1000 * 60 * 30;
 const sessionObj = {
     secret: 'green!@#$%^',
     resave: false, 
-    saveUninitialized: true, 
+    saveUninitialized: false, 
     store: new Memorystore({checkPeriod: maxAge}),
     cookie: {
         maxAge: maxAge,
@@ -82,4 +82,4 @@ app.use('/stat', statRouter);
 scheduleEventDeactivation();
 scheduleBanDeactivation();
 
-server.listen(3002);
+server.listen(3002, '0.0.0.0');
